@@ -4,12 +4,12 @@ import { DoctorsListComponent } from './pages/doctors/doctors-list.component/doc
 
 export const routes: Routes = [
      {
-        path: 'home',
+        path:'home',
         component: Home // Aquí se especifica el componente que se mostrará cuando la ruta sea 'home'
     },
     {
         path:'doctors',
-        component:DoctorsListComponent // Aquí se especifica el componente que se mostrará cuando la ruta sea 'doctors'
+        component: DoctorsListComponent
     },
     {
         path:'', //Ruta raiz

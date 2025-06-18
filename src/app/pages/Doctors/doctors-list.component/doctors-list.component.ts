@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { DoctorsService } from '../../../services/doctors.service';
 import { Doctor } from '../../../Interface/Doctor.model';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-doctors-list.component',
-  imports: [RouterLink],
+  standalone: true,
+  imports: [RouterLink,CommonModule],
   templateUrl: './doctors-list.component.html',
   styleUrl: './doctors-list.component.css'
 })
