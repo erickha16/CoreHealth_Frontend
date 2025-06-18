@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { ServicesListComponent } from './pages/services/services-list.component/services-list.component';
 import { ServicesCreateComponent } from './pages/services/services-create.component/services-create.component';
+import { ServicesUpdateComponent } from './pages/services/services-update.component/services-update.component';
+import { ServicesDeleteComponent } from './pages/services/services-delete.component/services-delete.component';
 
 export const routes: Routes = [
   {
@@ -22,11 +24,11 @@ export const routes: Routes = [
     component: ServicesCreateComponent,
   },
   {
-    path: 'services/delete',
-    component: ServicesListComponent,
+    path: 'services/delete/:id',
+    component: ServicesDeleteComponent,
   },
   {
-    path: 'services/update',
-    component: ServicesListComponent,
+    path: 'services/update/:id',
+    component: ServicesUpdateComponent,
   },
 ];
