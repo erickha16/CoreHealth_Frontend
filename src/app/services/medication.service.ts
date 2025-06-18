@@ -36,6 +36,4 @@ export class MedicationService {
     return this.http.delete<void>(`${environment.api.medication}/${id}`);
   }
 
-
-
 }

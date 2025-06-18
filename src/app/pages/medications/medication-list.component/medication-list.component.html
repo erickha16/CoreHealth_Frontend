@@ -1,1 +1,36 @@
-<p>medication-list.component works!</p> 
+<div class="container mx-auto p-6">
+  <h1 class="font-bold text-gray-800 mb-6">Marcas</h1>
+  <hr>
+
+  <!-- Barra de búsqueda con ngModel -->
+  <div class="mb-6">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="filter()"
+      placeholder="Buscar Medicamentos..."
+      class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+  </div>
+
+  <a routerLink="/medications/create" class="bg-green-500 text-white p-2 rounded">Nuevo medicamento</a>
+  <br><br>
+
+  <!-- Lista  -->
+  <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    @for(medication of filterMedications; track medication.id){
+      <li class="bg-white rounded shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+        <div class="p-4">
+          <h2 class="text-lg text-gray-800">{{ medication.name }}</h2>
+          <img 
+            [src]="'https://localhost:7048' + medication.urlImage" 
+            alt="{{ medication.name }}" 
+            class="w-full h-auto object-cover"
+          >
+        </div>
+      </li>
+    } @empty {
+      <p class="text-gray-500">No se encontraron medicamentos con "{{ searchTerm }}"</p>
+    }
+  </ul>
+</div>
