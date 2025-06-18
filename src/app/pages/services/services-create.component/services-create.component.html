@@ -1,1 +1,111 @@
-<p>services-create.component works!</p>
+<br /><br /><br />
+<form
+  [formGroup]="serviceForm"
+  (ngSubmit)="enviarFormulario()"
+  class="max-w-xl mx-auto bg-white p-6 rounded-xl shadow-lg space-y-6"
+>
+  <h2 class="text-2xl font-bold text-gray-800 mb-4">Registrar Servicio</h2>
+  <br />
+  <!-- Nombre -->
+  <div>
+    <label for="name" class="block text-gray-700 font-semibold mb-2">
+      Nombre del Servicio
+    </label>
+    <input
+      type="text"
+      id="name"
+      formControlName="name"
+      class="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+      placeholder="Ingrese el nombre del servicio"
+    />
+    <div
+      *ngIf="
+        serviceForm.get('name')?.invalid && serviceForm.get('name')?.touched
+      "
+      class="mt-1 text-sm text-red-600"
+    >
+      <small *ngIf="serviceForm.get('name')?.errors?.['required']">
+        El nombre es obligatorio.
+      </small>
+      <small *ngIf="serviceForm.get('name')?.errors?.['minlength']">
+        Mínimo 3 caracteres.
+      </small>
+    </div>
+  </div>
+
+  <!-- Descripción -->
+  <div>
+    <label for="description" class="block text-gray-700 font-semibold mb-2">
+      Descripción
+    </label>
+    <textarea
+      id="description"
+      formControlName="description"
+      rows="4"
+      class="w-full border border-gray-300 rounded-md p-3 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+      placeholder="Describe el servicio con detalle"
+    ></textarea>
+    <div
+      *ngIf="
+        serviceForm.get('description')?.invalid &&
+        serviceForm.get('description')?.touched
+      "
+      class="mt-1 text-sm text-red-600"
+    >
+      <small *ngIf="serviceForm.get('description')?.errors?.['required']">
+        La descripción es obligatoria.
+      </small>
+      <small *ngIf="serviceForm.get('description')?.errors?.['minlength']">
+        Mínimo 10 caracteres.
+      </small>
+    </div>
+  </div>
+
+  <!-- Costo -->
+  <div>
+    <label for="cost" class="block text-gray-700 font-semibold mb-2">
+      Costo
+    </label>
+    <input
+      type="number"
+      id="cost"
+      formControlName="cost"
+      min="0"
+      step="0.01"
+      class="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+      placeholder="0.00"
+    />
+    <div
+      *ngIf="
+        serviceForm.get('cost')?.invalid && serviceForm.get('cost')?.touched
+      "
+      class="mt-1 text-sm text-red-600"
+    >
+      <small *ngIf="serviceForm.get('cost')?.errors?.['required']">
+        El costo es obligatorio.
+      </small>
+      <small *ngIf="serviceForm.get('cost')?.errors?.['min']">
+        El costo debe ser mayor o igual a 0.
+      </small>
+    </div>
+  </div>
+
+  <!-- Botones -->
+  <div class="flex justify-end space-x-3 pt-4">
+    <button
+      type="reset"
+      class="px-5 py-2 rounded-md bg-gray-300 hover:bg-gray-400 transition font-semibold text-gray-700"
+      routerLink="/services"
+    >
+      Cancelar
+    </button>
+    <button
+      type="submit"
+      [disabled]="serviceForm.invalid"
+      class="px-5 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Guardar
+    </button>
+  </div>
+</form>
+<br /><br />
