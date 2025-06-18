@@ -3,7 +3,7 @@ export const environment = {
     appointment: '',
     clinicHistory: '',
     clinic: '',
-    doctor: '',
+    doctor: 'https://localhost:7167/api/v1/doctors',
     medication: '',
     patient: '',
     prescription: '',

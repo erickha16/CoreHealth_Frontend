@@ -4,6 +4,7 @@ import { ServicesListComponent } from './pages/services/services-list.component/
 import { ServicesCreateComponent } from './pages/services/services-create.component/services-create.component';
 import { ServicesUpdateComponent } from './pages/services/services-update.component/services-update.component';
 import { ServicesDeleteComponent } from './pages/services/services-delete.component/services-delete.component';
+import { DoctorsListComponent } from './pages/doctors/doctors-list.component/doctors-list.component';
 
 export const routes: Routes = [
   {
@@ -31,4 +32,7 @@ export const routes: Routes = [
     path: 'services/update/:id',
     component: ServicesUpdateComponent,
   },
+  {path:'doctors',
+    component:DoctorsListComponent,
+  }
 ];
