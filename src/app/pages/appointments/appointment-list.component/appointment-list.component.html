@@ -1,1 +1,54 @@
-<p>appointment-list.component works!</p>
+<div class="container mx-auto p-6">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Citas</h2>
+  <hr />
+  <br />
+
+  <a routerLink="/home/create" class="bg-green-500 text-white p-2 rounded">
+    Registrar nueva Cita
+  </a>
+
+  <br /><br />
+
+  <div class="overflow-x-auto shadow rounded-lg">
+    <table class="min-w-full text-left text-sm text-gray-800">
+      <thead class="bg-gray-100 font-bold">
+        <tr>
+          <th class="px-6 py-4">Fecha de la cita</th>
+          <th class="px-6 py-4">Paciente</th>
+          <th class="px-6 py-4">Clinica</th>
+          <th class="px-6 py-4">Motivo de la cita</th>
+          <th class="px-6 py-4">Diagnostico medico</th>
+          <th class="px-6 py-4">Tratamiento recetado</th>
+          <th class="px-6 py-4">Servicio realizado</th>
+          <th class="px-6 py-4 text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let cita of appointments"
+          class="border-b hover:bg-gray-50 transition"
+        >
+          <td class="px-6 py-4">{{ cita.date}}</td>
+          <td class="px-6 py-4">{{ cita.patientId}}</td>
+          <td class="px-6 py-4">{{ cita.clinicId}}</td>
+          <td class="px-6 py-4">{{ cita.reason}}</td>
+          <td class="px-6 py-4">{{ cita.diagnostic}}</td>
+          <td class="px-6 py-4">{{ cita.treatment}}</td>
+          <td class="px-6 py-4">{{ cita.serviceId}}</td>
+          <td class="px-6 py-4 flex justify-center space-x-2">
+            <a
+              [routerLink]="['/home/edit', cita.id]"
+              class="bg-blue-500 text-white px-3 py-1 rounded"
+              >Actualizar</a
+            >
+            <a
+              [routerLink]="['/home/delete', cita.id]"
+              class="bg-red-600 text-white px-3 py-1 rounded"
+              >Eliminar</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
