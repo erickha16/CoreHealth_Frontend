@@ -19,7 +19,7 @@ export class DoctorService {
   public postDoctor(doctor: Doctor): Observable<Doctor> {
     return this.http.post<Doctor>(environment.api.doctor, doctor);
   }
-  public putDoctor(doctor: Doctor): Observable<Doctor> {
+  public putDoctor(doctorId: number, doctor: Doctor): Observable<Doctor> {
     return this.http.put<Doctor>(`${environment.api.doctor}/${doctor.id}`, doctor);
   }
   public deleteDoctor(id: number): Observable<void> {
