@@ -29,14 +29,30 @@ import { ClinicListComponent } from './pages/clinics/clinic-list.component/clini
 import { ClinicCreateComponent } from './pages/clinics/clinic-create.component/clinic-create.component';
 import { ClinicEditComponent } from './pages/clinics/clinic-edit.component/clinic-edit.component';
 import { ClinicDeleteComponent } from './pages/clinics/clinic-delete.component/clinic-delete.component';
+import { AppointmentListComponent } from './pages/appointments/appointment-list.component/appointment-list.component';
+import { AppointmentCreateComponent } from './pages/appointments/appointment-create.component/appointment-create.component';
+import { AppointmentEditComponent } from './pages/appointments/appointment-edit.component/appointment-edit.component';
+import { AppointmentDeleteComponent } from './pages/appointments/appointment-delete.component/appointment-delete.component';
 
 
 
 export const routes: Routes = [
-  {
-    path: 'home',
-    component: Home, // Aquí se especifica el componente que se mostrará cuando la ruta sea 'home'
-  },
+    {
+        path: 'medications',
+        component: MedicationListComponent
+    },
+    {
+        path: 'medications/create',
+        component: MedicationCreateComponent
+    },
+    {
+        path: 'medications/edit/:id',
+        component: MedicationUpdateComponent
+    },
+    {
+        path: 'medications/delete/:id',
+        component: MedicationDeleteComponent
+    },
   {
     path: 'medications',
     component: MedicationListComponent,
@@ -116,9 +132,26 @@ export const routes: Routes = [
     component:ClinicDeleteComponent
   },
   {
-    path: 'doctors/delete/:id',
-    component:DoctorsDeleteComponent
+    path:'home',
+    component:AppointmentListComponent
   },
+  {
+    path:'home/create',
+    component:AppointmentCreateComponent
+  },
+  {
+    path:'home/edit/:id',
+    component:AppointmentEditComponent
+  },
+  {
+    path: 'home/delete/:id',
+    component:AppointmentDeleteComponent
+  },
+    {
+        path:'', //Ruta raiz
+        redirectTo: 'home', //Redirigir a la ruta home
+        pathMatch: 'full' //Hacer que la ruta sea exacta
+    },
   {
      path:'', //Ruta raiz
      redirectTo: 'home', //Redirigir a la ruta home
