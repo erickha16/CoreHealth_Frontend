@@ -15,7 +15,8 @@
         <tr>
           <th class="px-6 py-4">Nombre</th>
           <th class="px-6 py-4">Descripcion</th>
-          <th class="px-6 py-4">DoctorID</th>
+          <th class="px-6 py-4">DoctorId</th>
+          <th class="px-6 py-4">Doctor</th>
           <th class="px-6 py-4 text-center">Acciones</th>
         </tr>
       </thead>
@@ -27,6 +28,7 @@
           <td class="px-6 py-4">{{ consultorio.name}}</td>
           <td class="px-6 py-4 text-emerald-600 font-medium">{{ consultorio.description }}</td>
           <td class="px-6 py-4">{{ consultorio.doctorId}}</td>
+          <td class="px-6 py-4">{{ consultorio.doctorName}}</td>
           <td class="px-6 py-4 flex justify-center space-x-2">
             <a
               [routerLink]="['/clinics/edit', consultorio.id]"
