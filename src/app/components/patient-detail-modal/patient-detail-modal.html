@@ -30,7 +30,7 @@
       <div class="space-y-3">
         <p><span class="font-medium">Email:</span> <a [href]="'mailto:' + patient.email" class="text-blue-500 hover:underline">{{ patient.email }}</a></p>
         <p><span class="font-medium">Teléfono:</span> <a [href]="'tel:' + patient.phone" class="hover:text-blue-500">{{ patient.phone }}</a></p>
-        <p><span class="font-medium">Dirección:</span> {{ patient.adress }}</p>
+        <p><span class="font-medium">Dirección:</span> {{ patient.address }}</p>
       </div>
     </div>
 
@@ -42,6 +42,11 @@
       >
         Cerrar
       </button>
+      <a routerLink=""
+        class="px-4 py-2 bg-green-400 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 transition-colors"
+      >
+        Historial clínico
+      </a>
       <button 
         (click)="deletePatient()"
         class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"

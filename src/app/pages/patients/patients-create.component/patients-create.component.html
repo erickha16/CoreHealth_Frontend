@@ -1,1 +1,135 @@
-<p>patients-create.component works!</p>
+<div class="container mx-auto p-6 max-w-4xl">
+  <h1 class="text-2xl font-bold text-gray-800 mb-6">Registrar Nuevo Paciente</h1>
+
+  <form [formGroup]="patientForm" (ngSubmit)="enviarFormulario()" class="bg-white shadow-md rounded-lg p-6">
+    <!-- Sección de Información Básica -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Nombre -->
+      <div>
+        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nombre completo*</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          [class.border-red-500]="patientForm.get('name')?.invalid && patientForm.get('name')?.touched">
+        <div *ngIf="patientForm.get('name')?.invalid && patientForm.get('name')?.touched" class="text-red-500 text-sm mt-1">
+          <span *ngIf="patientForm.get('name')?.errors?.['required']">Este campo es obligatorio</span>
+          <span *ngIf="patientForm.get('name')?.errors?.['minlength']">Mínimo 3 caracteres</span>
+        </div>
+      </div>
+
+      <!-- Género -->
+      <div>
+        <label for="gender" class="block text-sm font-medium text-gray-700 mb-1">Género*</label>
+        <select
+          id="gender"
+          formControlName="gender"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          [class.border-red-500]="patientForm.get('gender')?.invalid && patientForm.get('gender')?.touched">
+          <option value="" disabled selected>Seleccione un género</option>
+          <option *ngFor="let gender of genders" [value]="gender">{{ gender }}</option>
+        </select>
+        <div *ngIf="patientForm.get('gender')?.invalid && patientForm.get('gender')?.touched" class="text-red-500 text-sm mt-1">
+          Este campo es obligatorio
+        </div>
+      </div>
+
+      <!-- Fecha de Nacimiento -->
+      <div>
+        <label for="birthDate" class="block text-sm font-medium text-gray-700 mb-1">Fecha de nacimiento*</label>
+        <input
+            type="date"
+            id="birthDate"
+            formControlName="birthDate"
+            [min]="minBirthDate"
+            [max]="maxBirthDate"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            [class.border-red-500]="patientForm.get('birthDate')?.invalid && patientForm.get('birthDate')?.touched">
+        <div *ngIf="patientForm.get('birthDate')?.invalid && patientForm.get('birthDate')?.touched" class="text-red-500 text-sm mt-1">
+            <span *ngIf="patientForm.get('birthDate')?.errors?.['required']">Este campo es obligatorio</span>
+            <span *ngIf="patientForm.get('birthDate')?.errors?.['tooYoung']">El paciente debe tener al menos 18 años</span>
+            <span *ngIf="patientForm.get('birthDate')?.errors?.['tooOld']">La edad no puede ser mayor a 100 años</span>
+        </div>
+      </div>
+
+      <!-- NSS -->
+      <div>
+        <label for="nss" class="block text-sm font-medium text-gray-700 mb-1">Número de Seguro Social (NSS)*</label>
+        <input
+          type="text"
+          id="nss"
+          formControlName="nss"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          [class.border-red-500]="patientForm.get('nss')?.invalid && patientForm.get('nss')?.touched">
+        <div *ngIf="patientForm.get('nss')?.invalid && patientForm.get('nss')?.touched" class="text-red-500 text-sm mt-1">
+          Este campo es obligatorio
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de Contacto -->
+    <h2 class="text-lg font-semibold text-gray-800 mt-8 mb-4">Información de Contacto</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Teléfono -->
+      <div>
+        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Teléfono*</label>
+        <input
+          type="tel"
+          id="phone"
+          formControlName="phone"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          [class.border-red-500]="patientForm.get('phone')?.invalid && patientForm.get('phone')?.touched">
+        <div *ngIf="patientForm.get('phone')?.invalid && patientForm.get('phone')?.touched" class="text-red-500 text-sm mt-1">
+          <span *ngIf="patientForm.get('phone')?.errors?.['required']">Este campo es obligatorio</span>
+          <span *ngIf="patientForm.get('phone')?.errors?.['maxlength']">Máximo 10 dígitos</span>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Correo electrónico*</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          [class.border-red-500]="patientForm.get('email')?.invalid && patientForm.get('email')?.touched">
+        <div *ngIf="patientForm.get('email')?.invalid && patientForm.get('email')?.touched" class="text-red-500 text-sm mt-1">
+          <span *ngIf="patientForm.get('email')?.errors?.['required']">Este campo es obligatorio</span>
+          <span *ngIf="patientForm.get('email')?.errors?.['email']">Ingrese un email válido</span>
+        </div>
+      </div>
+
+      <!-- Dirección -->
+      <div class="md:col-span-2">
+        <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Dirección completa*</label>
+        <textarea
+          id="address"
+          formControlName="address"
+          rows="3"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          [class.border-red-500]="patientForm.get('address')?.invalid && patientForm.get('address')?.touched"></textarea>
+        <div *ngIf="patientForm.get('address')?.invalid && patientForm.get('address')?.touched" class="text-red-500 text-sm mt-1">
+          Este campo es obligatorio
+        </div>
+      </div>
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="flex justify-end space-x-4 mt-8 pt-4 border-t border-gray-200">
+      <a
+        routerLink="/patients"
+        class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+      >
+        Cancelar
+      </a>
+      <button
+        type="submit"
+        class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Registrar Paciente
+      </button>
+    </div>
+  </form>
+</div>

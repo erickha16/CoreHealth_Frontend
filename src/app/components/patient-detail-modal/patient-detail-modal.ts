@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Patient } from '../../interfaces/Patient.model';
 import { PatientService } from '../../services/patient.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-patient-detail-modal',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './patient-detail-modal.html',
   styleUrl: './patient-detail-modal.css'
 })
