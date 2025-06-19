@@ -26,7 +26,7 @@ ngOnInit(): void {
     this.clinicForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(5)]],
-
+      doctorId: [null],
     }); 
     // Cargar la lista de doctores al iniciar el componente
     this.doctorService.getDoctors().subscribe({
