@@ -7,7 +7,8 @@ export const environment = {
     medication: 'https://localhost:7167/api/medications',
     patient: '',
     prescription: '',
-    prescriptionMedication: '',
+    prescriptionMedication:
+      'https://localhost:7167/api/v1/prescriptions-medication',
     service: 'https://localhost:7167/api/v1/service',
   },
 };
