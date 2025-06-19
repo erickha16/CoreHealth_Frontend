@@ -1,31 +1,93 @@
-<form [formGroup]="clinicForm" (ngSubmit)="enviarFormulario()" class="space-y-4 p-4 border rounded">
+<br /><br /><br />
+<form
+  [formGroup]="clinicForm"
+  (ngSubmit)="enviarFormulario()"
+  class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow space-y-6"
+>
+  <h2 class="text-2xl font-bold text-gray-800 mb-4">Registrar Consultorio</h2>
 
-    <label for="name" class="block font-semibold">Nombre:</label>
-    <input type="text" id="name" formControlName="name" class="border p-2 w-full">
-    <div *ngIf="clinicForm.get('name')?.invalid && clinicForm.get('name')?.touched">
-      <small *ngIf="clinicForm.get('name')?.errors?.['required']" class="text-red-500">El nombre es obligatorio.</small>
-      <small *ngIf="clinicForm.get('name')?.errors?.['minlength']" class="text-red-500">El nombre debe tener al menos 3 caracteres.</small>
+  <!-- Nombre -->
+  <div>
+    <label for="name" class="block text-gray-700 font-medium mb-1"
+      >Nombre</label
+    >
+    <input
+      type="text"
+      id="name"
+      formControlName="name"
+      placeholder="Ej. Consultorio 1"
+      class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <div
+      *ngIf="clinicForm.get('name')?.invalid && clinicForm.get('name')?.touched"
+      class="text-sm text-red-600 mt-1"
+    >
+      <small *ngIf="clinicForm.get('name')?.errors?.['required']"
+        >El nombre es obligatorio.</small
+      >
+      <small *ngIf="clinicForm.get('name')?.errors?.['minlength']"
+        >Debe tener al menos 3 caracteres.</small
+      >
     </div>
-    
-    <label for="description" class="block font-semibold">Descripcción:</label>
-    <input type="text" id="description" formControlName="description" class="border p-2 w-full">
-    <div *ngIf="clinicForm.get('description')?.invalid && clinicForm.get('description')?.touched" class="text-red-500">
-      <small *ngIf="clinicForm.get('description')?.errors?.['required']">Debe especificar el tipo de consultorio</small>
-    </div>
+  </div>
 
-    <label for="doctor" class="block font-semibold">Doctor a cargo:</label>
-    <select id="doctor" formControlName="doctorId" class="border p-2 w-full">
-      <option value="" disabled selected>Seleccione una doctor</option>
+  <!-- Descripción -->
+  <div>
+    <label for="description" class="block text-gray-700 font-medium mb-1"
+      >Descripción</label
+    >
+    <input
+      type="text"
+      id="description"
+      formControlName="description"
+      placeholder="Ej. Especializado en pediatría"
+      class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <div
+      *ngIf="
+        clinicForm.get('description')?.invalid &&
+        clinicForm.get('description')?.touched
+      "
+      class="text-sm text-red-600 mt-1"
+    >
+      <small *ngIf="clinicForm.get('description')?.errors?.['required']"
+        >Debe especificar el tipo de consultorio.</small
+      >
+    </div>
+  </div>
+
+  <!-- Doctor a cargo -->
+  <div>
+    <label for="doctor" class="block text-gray-700 font-medium mb-1"
+      >Doctor a cargo</label
+    >
+    <select
+      id="doctor"
+      formControlName="doctorId"
+      class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+      <option value="" disabled selected>Seleccione un doctor</option>
       <option *ngFor="let doctor of doctors" [value]="doctor.id">
         {{ doctor.name }}
       </option>
-    </select>    
+    </select>
+  </div>
 
-    <div class="flex justify-end space-x-2">
-      <a routerLink="/clinics" class="bg-green-500 text-white p-2 rounded">Cancelar</a>
-      <button type="submit" class="bg-blue-500 text-white p-2 rounded"> <!--[disabled]="clinicForm.invalid"-->
-        Guardar
-      </button>
-    </div>
-  
-  </form>
+  <!-- Botones -->
+  <div class="flex justify-end gap-4 pt-4">
+    <a
+      routerLink="/clinics"
+      class="px-5 py-2 rounded-md bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold transition"
+    >
+      Cancelar
+    </a>
+    <button
+      type="submit"
+      [disabled]="clinicForm.invalid"
+      class="px-5 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Guardar
+    </button>
+  </div>
+</form>
+<br /><br /><br />

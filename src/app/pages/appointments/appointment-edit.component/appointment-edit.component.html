@@ -1,57 +1,143 @@
-<form [formGroup]="appointmentForm" (ngSubmit)="updateAppointment()" class="space-y-4 p-4 border rounded">
+<br /><br /><br />
+<form
+  [formGroup]="appointmentForm"
+  (ngSubmit)="updateAppointment()"
+  class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow space-y-6"
+>
+  <h2 class="text-2xl font-bold text-gray-800 mb-4">Actualizar Cita Médica</h2>
 
-    <mat-form-field>
-        <mat-label>Selecciona una fecha</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="date">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+  <!-- Fecha -->
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>Fecha de la cita</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      formControlName="date"
+      placeholder="MM/DD/YYYY"
+    />
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
 
-    <label for="patient" class="block font-semibold">Paciente:</label>
-    <select id="patient" formControlName="patientId" class="border p-2 w-full">
+  <!-- Paciente -->
+  <div>
+    <label for="patient" class="block text-gray-700 font-medium mb-1"
+      >Paciente</label
+    >
+    <select
+      id="patient"
+      formControlName="patientId"
+      class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
       <option value="" disabled selected>Seleccione un paciente</option>
       <option *ngFor="let patient of patients" [value]="patient.id">
         {{ patient.name }}
       </option>
-    </select>    
+    </select>
+  </div>
 
-    <label for="clinic" class="block font-semibold">consultorio:</label>
-    <select id="clinic" formControlName="clinicId" class="border p-2 w-full">
-      <option value="" disabled selected>Seleccione una patient</option>
+  <!-- Consultorio -->
+  <div>
+    <label for="clinic" class="block text-gray-700 font-medium mb-1"
+      >Consultorio</label
+    >
+    <select
+      id="clinic"
+      formControlName="clinicId"
+      class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+      <option value="" disabled selected>Seleccione un consultorio</option>
       <option *ngFor="let clinic of clinics" [value]="clinic.id">
         {{ clinic.name }}
       </option>
-    </select>    
+    </select>
+  </div>
 
-    <label for="reason" class="block font-semibold">Motivo de la cita:</label>
-    <input type="text" id="reason" formControlName="reason" class="border p-2 w-full">
-    <div *ngIf="appointmentForm.get('reason')?.invalid && appointmentForm.get('reason')?.touched">
-      <small *ngIf="appointmentForm.get('reason')?.errors?.['required']" class="text-red-500">El motivo no puede estar en blanco.</small>
+  <!-- Motivo -->
+  <div>
+    <label for="reason" class="block text-gray-700 font-medium mb-1"
+      >Motivo de la cita</label
+    >
+    <input
+      type="text"
+      id="reason"
+      formControlName="reason"
+      placeholder="Ej. Dolor abdominal"
+      class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <div
+      *ngIf="
+        appointmentForm.get('reason')?.invalid &&
+        appointmentForm.get('reason')?.touched
+      "
+      class="text-sm text-red-600 mt-1"
+    >
+      <small *ngIf="appointmentForm.get('reason')?.errors?.['required']"
+        >El motivo no puede estar en blanco.</small
+      >
     </div>
-    
-    <label for="diagnostic" class="block font-semibold">Diagnostico:</label>
-    <input type="text" id="diagnostic" formControlName="diagnostic" class="border p-2 w-full">
-    
+  </div>
 
-    <label for="treatment" class="block font-semibold">Tratamiento:</label>
-    <input type="text" id="treatment" formControlName="treatment" class="border p-2 w-full">
-    
-    
-    <label for="service" class="block font-semibold">servicio:</label>
-    <select id="service" formControlName="serviceId" class="border p-2 w-full">
-      <option value="" disabled selected>Seleccione un Servicio</option>
+  <!-- Diagnóstico -->
+  <div>
+    <label for="diagnostic" class="block text-gray-700 font-medium mb-1"
+      >Diagnóstico</label
+    >
+    <input
+      type="text"
+      id="diagnostic"
+      formControlName="diagnostic"
+      placeholder="Ej. Gastritis aguda"
+      class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+  </div>
+
+  <!-- Tratamiento -->
+  <div>
+    <label for="treatment" class="block text-gray-700 font-medium mb-1"
+      >Tratamiento</label
+    >
+    <input
+      type="text"
+      id="treatment"
+      formControlName="treatment"
+      placeholder="Ej. Omeprazol por 7 días"
+      class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+  </div>
+
+  <!-- Servicio -->
+  <div>
+    <label for="service" class="block text-gray-700 font-medium mb-1"
+      >Servicio</label
+    >
+    <select
+      id="service"
+      formControlName="serviceId"
+      class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+      <option value="" disabled selected>Seleccione un servicio</option>
       <option *ngFor="let service of services" [value]="service.id">
         {{ service.name }}
       </option>
-    </select> 
+    </select>
+  </div>
 
-
-    <div class="flex justify-end space-x-2">
-      <a routerLink="/home" class="bg-green-500 text-white p-2 rounded">Cancelar</a>
-      <button type="submit" class="bg-blue-500 text-white p-2 rounded"> <!--[disabled]="appointmentForm.invalid"-->
-        Guardar
-      </button>
-    </div>
-  
-  </form>
+  <!-- Botones -->
+  <div class="flex justify-end gap-4 pt-4">
+    <a
+      routerLink="/home"
+      class="px-5 py-2 rounded-md bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold transition"
+    >
+      Cancelar
+    </a>
+    <button
+      type="submit"
+      [disabled]="appointmentForm.invalid"
+      class="px-5 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Guardar
+    </button>
+  </div>
+</form>
+<br /><br /><br />
