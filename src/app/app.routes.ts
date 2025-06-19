@@ -21,7 +21,6 @@ import { PatientsListComponent } from './pages/patients/patients-list.component/
 import { PatientsCreateComponent } from './pages/patients/patients-create.component/patients-create.component';
 import { PatientsUpdateComponent } from './pages/patients/patients-update.component/patients-update.component';
 
-
 import { PrescriptionMedicationsListComponent } from './pages/prescription-medications/prescription-medications-list.component/prescription-medications-list.component';
 import { PrescriptionMedicationsCreateComponent } from './pages/prescription-medications/prescription-medications-create.component/prescription-medications-create.component';
 import { PrescriptionMedicationsUpdateComponent } from './pages/prescription-medications/prescription-medications-update.component/prescription-medications-update.component';
@@ -39,80 +38,60 @@ import { PrescriptionShowComponent } from './pages/prescription/prescription-sho
 import { PrescriptionCreateComponent } from './pages/prescription/prescription-create.component/prescription-create.component';
 
 export const routes: Routes = [
-    {
-        path: 'medications',
-        component: MedicationListComponent
-    },
-    {
-        path: 'medications/create',
-        component: MedicationCreateComponent
-    },
-    {
-        path: 'medications/edit/:id',
-        component: MedicationUpdateComponent
-    },
-    {
-        path: 'medications/delete/:id',
-        component: MedicationDeleteComponent
-    },
-    {
-        path: 'patients',
-        component: PatientsListComponent 
-    },
-    {
-        path: 'patients/create',
-        component: PatientsCreateComponent
-    },
-    {
-        path: 'patients/edit/:id',
-        component: PatientsUpdateComponent
-    },
-    {
-      path: 'services',
-      component: ServicesListComponent,
-    },
-    {
-      path: 'services/create',
-      component: ServicesCreateComponent,
-    },
-    {
-      path: 'services/delete/:id',
-      component: ServicesDeleteComponent,
-    },
-    {
-      path: 'services/update/:id',
-      component: ServicesUpdateComponent,
-    },
-    {path:'doctors',
-      component:DoctorsListComponent,
-    },
-    {
-      path:'doctors/create',
-      component : DoctorsCreateComponent
-    },
-    {
-      path: 'doctors/edit/:id',
-      component:DoctorsEditComponent
-    },
-    {path: 'doctors/delete/:id',
-      component:DoctorsDeleteComponent
-    },
-    {
-      path: 'clinic_histories/:id',
-      component: ClinicHistoriesListComponent,
-    },
-    {
-      path: 'clinic_histories/create/:id',
-      component: ClinicHistoriesCreateComponent,
-    },
-    {
-      path: 'clinic_histories/update/:id',
-      component: ClinicHistoriesUpdateComponent,
-    },
-    {
-      path: 'clinic_histories/delete/:id',
-      component: ClinicHistoriesDeleteComponent,
-    },
+  {
+    path: 'patients',
+    component: PatientsListComponent,
+  },
+  {
+    path: 'patients/create',
+    component: PatientsCreateComponent,
+  },
+  {
+    path: 'patients/edit/:id',
+    component: PatientsUpdateComponent,
+  },
+  {
+    path: 'services',
+    component: ServicesListComponent,
+  },
+  {
+    path: 'services/create',
+    component: ServicesCreateComponent,
+  },
+  {
+    path: 'services/delete/:id',
+    component: ServicesDeleteComponent,
+  },
+  {
+    path: 'services/update/:id',
+    component: ServicesUpdateComponent,
+  },
+  { path: 'doctors', component: DoctorsListComponent },
+  {
+    path: 'doctors/create',
+    component: DoctorsCreateComponent,
+  },
+  {
+    path: 'doctors/edit/:id',
+    component: DoctorsEditComponent,
+  },
+  { path: 'doctors/delete/:id', component: DoctorsDeleteComponent },
+  {
+    path: 'clinic_histories/:id',
+    component: ClinicHistoriesListComponent,
+  },
+  {
+    path: 'clinic_histories/create/:id',
+    component: ClinicHistoriesCreateComponent,
+  },
+  {
+    path: 'clinic_histories/update/:id',
+    component: ClinicHistoriesUpdateComponent,
+  },
+  {
+    path: 'clinic_histories/delete/:id',
+    component: ClinicHistoriesDeleteComponent,
+  },
   {
     path: 'medications',
     component: MedicationListComponent,
@@ -145,9 +124,7 @@ export const routes: Routes = [
     path: 'services/update/:id',
     component: ServicesUpdateComponent,
   },
-  { path: 'doctors', 
-    component: DoctorsListComponent 
-  },
+  { path: 'doctors', component: DoctorsListComponent },
   {
     path: 'doctors/create',
     component: DoctorsCreateComponent,
@@ -156,9 +133,7 @@ export const routes: Routes = [
     path: 'doctors/edit/:id',
     component: DoctorsEditComponent,
   },
-  { path: 'doctors/delete/:id', 
-    component: DoctorsDeleteComponent 
-  },
+  { path: 'doctors/delete/:id', component: DoctorsDeleteComponent },
   {
     path: 'prescription_medications/:id', // id = prescriptionId
     component: PrescriptionMedicationsListComponent,
@@ -174,42 +149,6 @@ export const routes: Routes = [
   {
     path: 'prescription_medications/delete/:id',
     component: PrescriptionMedicationsDeleteComponent,
-  },
-  {
-    path: 'clinic_histories/:id', // id = prescriptionId
-    component: ClinicHistoriesListComponent,
-  },
-  {
-    path: 'clinic_histories/create/:id', // id = prescriptionId
-    component: ClinicHistoriesCreateComponent,
-  },
-  {
-    path: 'clinic_histories/update/:id',
-    component: ClinicHistoriesUpdateComponent,
-  },
-  {
-    path: 'clinic_histories/delete/:id',
-    component: ClinicHistoriesDeleteComponent,
-  },
-  {
-    path: 'doctors',
-    component: DoctorsListComponent,
-  },
-  {
-    path: 'clinic_histories/create/:id', // id = prescriptionId
-    component: ClinicHistoriesCreateComponent,
-  },
-  {
-    path: 'clinic_histories/update/:id',
-    component: ClinicHistoriesUpdateComponent,
-  },
-  {
-    path: 'clinic_histories/delete/:id',
-    component: ClinicHistoriesDeleteComponent,
-  },
-  {
-    path: 'doctors',
-    component: DoctorsListComponent,
   },
   {
     path: 'clinics',
@@ -228,28 +167,28 @@ export const routes: Routes = [
     component: ClinicDeleteComponent,
   },
   {
-    path:'home',
-    component:AppointmentListComponent
+    path: 'home',
+    component: AppointmentListComponent,
   },
   {
-    path:'home/create',
-    component:AppointmentCreateComponent
+    path: 'home/create',
+    component: AppointmentCreateComponent,
   },
   {
-    path:'home/edit/:id',
-    component:AppointmentEditComponent
+    path: 'home/edit/:id',
+    component: AppointmentEditComponent,
   },
   {
     path: 'home/delete/:id',
-    component:AppointmentDeleteComponent
+    component: AppointmentDeleteComponent,
   },
   {
     path: 'prescription/create/:id',
-    component: PrescriptionCreateComponent
+    component: PrescriptionCreateComponent,
   },
   {
-  path: 'prescription/:id',
-    component: PrescriptionShowComponent
+    path: 'prescription/:id',
+    component: PrescriptionShowComponent,
   },
   {
     path: '', //Ruta raiz
