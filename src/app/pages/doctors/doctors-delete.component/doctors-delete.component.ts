@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { Doctor } from '../../../interfaces/Doctor.model';
 import { DoctorService } from '../../../services/doctor.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-doctors-delete.component',
-  imports: [],
+  imports: [RouterLink,ReactiveFormsModule],
   templateUrl: './doctors-delete.component.html',
   styleUrl: './doctors-delete.component.css'
 })
