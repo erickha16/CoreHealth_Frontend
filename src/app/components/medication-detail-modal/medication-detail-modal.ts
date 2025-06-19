@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './medication-detail-modal.css'
 })
 export class MedicationDetailModal {
-  @Input() medication!: Medication;
+  @Input() medication!: Medication; 
   @Input() visible: boolean = false;
 
   close(){
