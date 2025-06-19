@@ -8,17 +8,17 @@
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    <label for="doctor" class="block font-semibold">Paciente:</label>
-    <select id="doctor" formControlName="doctorId" class="border p-2 w-full">
-      <option value="" disabled selected>Seleccione una doctor</option>
-      <option *ngFor="let doctor of doctors" [value]="doctor.id">
-        {{ doctor.name }}
+    <label for="patient" class="block font-semibold">Paciente:</label>
+    <select id="patient" formControlName="patientId" class="border p-2 w-full">
+      <option value="" disabled selected>Seleccione un paciente</option>
+      <option *ngFor="let patient of patients" [value]="patient.id">
+        {{ patient.name }}
       </option>
     </select>    
 
     <label for="clinic" class="block font-semibold">consultorio:</label>
     <select id="clinic" formControlName="clinicId" class="border p-2 w-full">
-      <option value="" disabled selected>Seleccione una doctor</option>
+      <option value="" disabled selected>Seleccione una patient</option>
       <option *ngFor="let clinic of clinics" [value]="clinic.id">
         {{ clinic.name }}
       </option>

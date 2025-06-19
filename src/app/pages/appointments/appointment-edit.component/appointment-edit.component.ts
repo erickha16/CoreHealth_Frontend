@@ -3,7 +3,6 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ClinicService } from '../../../services/clinic.service';
 import { DoctorService } from '../../../services/doctor.service';
 import { Clinic } from '../../../interfaces/Clinic.model';
-import { Doctor } from '../../../interfaces/Doctor.model';
 import { CommonModule } from '@angular/common';
 import { ServiceService } from '../../../services/service.service';
 import { Appointment } from '../../../interfaces/Appointment.model';
@@ -13,6 +12,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
+import { Patient } from '../../../interfaces/Patient.model';
+import { PatientService } from '../../../services/patient.service';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class AppointmentEditComponent {
   appointmentForm!: import('@angular/forms').FormGroup;
   AppointmentData!: Appointment;
   clinics!: Clinic[];
-  doctors!: Doctor[];
+  patients!: Patient[];
   services!: Service[];
   
   constructor(
@@ -34,7 +35,7 @@ export class AppointmentEditComponent {
     private fb: FormBuilder,  // Para crear el formulario reactivo
     private readonly clinicService: ClinicService,  // Servicio para interactuar con la API
     private router: Router,  // Para redirigir al usuario después de la actualización
-    private readonly doctorsService:DoctorService,
+    private readonly patientsService:PatientService,
     private readonly serviceService: ServiceService,
     private readonly appointmentService: AppointmentService,
   ) { }
@@ -57,8 +58,8 @@ export class AppointmentEditComponent {
 
     // Cargar los datos del clinic para editar
     this.loadAppointmentData();
-    this.doctorsService.getDoctors().subscribe({
-      next: (data) => { this.doctors = data; },
+    this.patientsService.getList().subscribe({
+      next: (data) => { this.patients = data; },
       error: (err) => { console.error('Error al obtener clinicas:', err); }
     });
     this.clinicService.getClinics().subscribe({

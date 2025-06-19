@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
 import { MedicationListComponent } from './pages/medications/medication-list.component/medication-list.component';
 import { MedicationCreateComponent } from './pages/medications/medication-create.component/medication-create.component';
 import { MedicationUpdateComponent } from './pages/medications/medication-update.component/medication-update.component';
@@ -144,7 +143,9 @@ export const routes: Routes = [
     path: 'services/update/:id',
     component: ServicesUpdateComponent,
   },
-  { path: 'doctors', component: DoctorsListComponent },
+  { path: 'doctors', 
+    component: DoctorsListComponent 
+  },
   {
     path: 'doctors/create',
     component: DoctorsCreateComponent,
@@ -153,7 +154,9 @@ export const routes: Routes = [
     path: 'doctors/edit/:id',
     component: DoctorsEditComponent,
   },
-  { path: 'doctors/delete/:id', component: DoctorsDeleteComponent },
+  { path: 'doctors/delete/:id', 
+    component: DoctorsDeleteComponent 
+  },
   {
     path: 'prescription_medications/:id', // id = prescriptionId
     component: PrescriptionMedicationsListComponent,
@@ -189,16 +192,6 @@ export const routes: Routes = [
   {
     path: 'doctors',
     component: DoctorsListComponent,
-  },
-  {
-    path: 'clinics',
-    component: ClinicListComponent,
-  },
-  {
-    path: 'clinics/create',
-    component: ClinicCreateComponent,
-  },
-  {
   },
   {
     path: 'clinic_histories/create/:id', // id = prescriptionId

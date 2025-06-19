@@ -12,6 +12,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { ServiceService } from '../../../services/service.service';
+import { Patient } from '../../../interfaces/Patient.model';
+import { PatientService } from '../../../services/patient.service';
 
 @Component({
   selector: 'app-appointment-create.component',
@@ -22,14 +24,14 @@ import { ServiceService } from '../../../services/service.service';
 })
 export class AppointmentCreateComponent {
 appointmentForm!: FormGroup;
-doctors: Doctor[] = [];
+patients: Patient[] = [];
 clinics: Clinic[] = [];
 services:Service[] = [];
 constructor(
   private readonly appointmentService: AppointmentService,
   private readonly formBuilder: FormBuilder,
   private readonly router: Router,
-  private readonly doctorService:DoctorService,
+  private readonly patientService:PatientService,
   private readonly clinicService: ClinicService,
   private readonly serviceService: ServiceService,
   
@@ -46,10 +48,10 @@ ngOnInit(): void {
     serviceId: [null],
     }); 
     // Cargar la lista de doctores al iniciar el componente
-    this.doctorService.getDoctors().subscribe({
+    this.patientService.getList().subscribe({
 
       next: (data) => {
-        this.doctors = data;
+        this.patients = data;
       },
       error: (err) => {
         console.error('Error al obtener doctores:', err);
