@@ -1,9 +1,7 @@
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Doctor } from '../../../interfaces/Doctor.model';
 import { Clinic } from '../../../interfaces/Clinic.model';
 import { AppointmentService } from '../../../services/appointment.service';
 import { Router, RouterLink } from '@angular/router';
-import { DoctorService } from '../../../services/doctor.service';
 import { ClinicService } from '../../../services/clinic.service';
 import { CommonModule } from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';

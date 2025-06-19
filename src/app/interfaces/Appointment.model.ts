@@ -6,5 +6,5 @@ export interface Appointment {
     reason: string,
     diagnostic: string | null,
     treatment: string | null,
-    serviceId: string | null,
+    serviceId: number | null,
 }
