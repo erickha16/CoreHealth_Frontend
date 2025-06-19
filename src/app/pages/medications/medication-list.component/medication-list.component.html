@@ -1,0 +1,79 @@
+<div class="container mx-auto p-6">
+  <!-- Header con título y botón alineados -->
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold text-gray-800">Medicamentos</h1>
+    <a routerLink="/medications/create" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition-colors">
+      + Nuevo medicamento
+    </a>
+  </div>
+
+  <hr class="mb-6">
+
+  <!-- Barra de búsqueda mejorada -->
+  <div class="mb-8 relative">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="filter()"
+      placeholder="Buscar medicamentos..."
+      class="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+    >
+    <svg class="w-5 h-5 absolute left-3 top-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+    </svg>
+  </div>
+
+  <!-- Lista de medicamentos - Diseño tipo cards -->
+  <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    @for(medication of filterMedications; track medication.id){
+      <li class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100">
+        <!-- Contenedor de imagen con tamaño fijo -->
+        <div class="h-48 overflow-hidden bg-white flex items-center justify-center">
+          <img 
+            [src]="'https://localhost:7167' + medication.urlImage"
+            alt="{{ medication.name }}" 
+            class="w-full h-full object-contain p-4"
+          >
+        </div>
+        
+        <!-- Contenido de la card -->
+        <div class="p-4">
+          <h2 class="text-lg font-semibold text-gray-800 mb-2 truncate">{{ medication.name }}</h2>
+          
+          <!-- Botones con mejor espaciado -->
+          <div class="flex justify-between mt-4">
+            <button (click)="openDetails(medication)" 
+              class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors flex items-center hover:cursor-pointer">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Detalles
+            </button>
+            <a [routerLink]="['/medications/delete', medication.id]" 
+              class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md transition-colors flex items-center hover:cursor-pointer">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+              </svg>
+              Eliminar
+            </a>
+          </div>
+        </div>
+      </li>
+
+    } @empty {
+      <div class="col-span-full text-center py-10">
+        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <h3 class="mt-2 text-lg font-medium text-gray-900">No se encontraron medicamentos</h3>
+        <p class="mt-1 text-gray-500">"{{ searchTerm }}" no coincide con ningún registro</p>
+      </div>
+    }
+  </ul>
+</div>
+
+<app-medication-detail-modal 
+  [medication]="selectedMedication" 
+  [visible]="showDetailModal"
+  (click)="showDetailModal = false">
+</app-medication-detail-modal>

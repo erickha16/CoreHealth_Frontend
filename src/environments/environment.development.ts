@@ -4,7 +4,7 @@ export const environment = {
     clinicHistory: 'https://localhost:7167/api/v1/clinic-histories',
     clinic: '',
     doctor: '',
-    medication: '',
+    medication: 'https://localhost:7167/api/medications',
     patient: '',
     prescription: '',
     prescriptionMedication: '',
