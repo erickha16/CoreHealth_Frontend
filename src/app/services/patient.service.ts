@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class PatientService {
-
+ 
   constructor(private http:HttpClient) { }
   //Listado
     public getList(): Observable<Patient[]>{
