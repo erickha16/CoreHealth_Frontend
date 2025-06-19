@@ -22,6 +22,7 @@ import { PatientsListComponent } from './pages/patients/patients-list.component/
 import { PatientsCreateComponent } from './pages/patients/patients-create.component/patients-create.component';
 import { PatientsUpdateComponent } from './pages/patients/patients-update.component/patients-update.component';
 
+
 import { PrescriptionMedicationsListComponent } from './pages/prescription-medications/prescription-medications-list.component/prescription-medications-list.component';
 import { PrescriptionMedicationsCreateComponent } from './pages/prescription-medications/prescription-medications-create.component/prescription-medications-create.component';
 import { PrescriptionMedicationsUpdateComponent } from './pages/prescription-medications/prescription-medications-update.component/prescription-medications-update.component';
@@ -198,6 +199,32 @@ export const routes: Routes = [
     component: ClinicCreateComponent,
   },
   {
+  },
+  {
+    path: 'clinic_histories/create/:id', // id = prescriptionId
+    component: ClinicHistoriesCreateComponent,
+  },
+  {
+    path: 'clinic_histories/update/:id',
+    component: ClinicHistoriesUpdateComponent,
+  },
+  {
+    path: 'clinic_histories/delete/:id',
+    component: ClinicHistoriesDeleteComponent,
+  },
+  {
+    path: 'doctors',
+    component: DoctorsListComponent,
+  },
+  {
+    path: 'clinics',
+    component: ClinicListComponent,
+  },
+  {
+    path: 'clinics/create',
+    component: ClinicCreateComponent,
+  },
+  {
     path: 'clinics/edit/:id',
     component: ClinicEditComponent,
   },
@@ -220,8 +247,6 @@ export const routes: Routes = [
   {
     path: 'home/delete/:id',
     component:AppointmentDeleteComponent
-    path: 'doctors/delete/:id',
-    component: DoctorsDeleteComponent,
   },
   {
     path: '', //Ruta raiz
