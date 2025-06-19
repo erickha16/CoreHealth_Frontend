@@ -18,6 +18,9 @@ import { ClinicHistoriesListComponent } from './pages/clinic-histories/clinic-hi
 import { ClinicHistoriesCreateComponent } from './pages/clinic-histories/clinic-histories-create.component/clinic-histories-create.component';
 import { ClinicHistoriesUpdateComponent } from './pages/clinic-histories/clinic-histories-update.component/clinic-histories-update.component';
 import { ClinicHistoriesDeleteComponent } from './pages/clinic-histories/clinic-histories-delete.component/clinic-histories-delete.component';
+import { PatientsListComponent } from './pages/patients/patients-list.component/patients-list.component';
+import { PatientsCreateComponent } from './pages/patients/patients-create.component/patients-create.component';
+import { PatientsUpdateComponent } from './pages/patients/patients-update.component/patients-update.component';
 
 
 import { PrescriptionMedicationsListComponent } from './pages/prescription-medications/prescription-medications-list.component/prescription-medications-list.component';
@@ -50,6 +53,18 @@ export const routes: Routes = [
     {
         path: 'medications/delete/:id',
         component: MedicationDeleteComponent
+    },
+    {
+        path: 'patients',
+        component: PatientsListComponent 
+    },
+    {
+        path: 'patients/create',
+        component: PatientsCreateComponent
+    },
+    {
+        path: 'patients/edit/:id',
+        component: PatientsUpdateComponent
     },
     {
       path: 'services',
@@ -184,6 +199,32 @@ export const routes: Routes = [
     component: ClinicCreateComponent,
   },
   {
+  },
+  {
+    path: 'clinic_histories/create/:id', // id = prescriptionId
+    component: ClinicHistoriesCreateComponent,
+  },
+  {
+    path: 'clinic_histories/update/:id',
+    component: ClinicHistoriesUpdateComponent,
+  },
+  {
+    path: 'clinic_histories/delete/:id',
+    component: ClinicHistoriesDeleteComponent,
+  },
+  {
+    path: 'doctors',
+    component: DoctorsListComponent,
+  },
+  {
+    path: 'clinics',
+    component: ClinicListComponent,
+  },
+  {
+    path: 'clinics/create',
+    component: ClinicCreateComponent,
+  },
+  {
     path: 'clinics/edit/:id',
     component: ClinicEditComponent,
   },
@@ -206,7 +247,6 @@ export const routes: Routes = [
   {
     path: 'home/delete/:id',
     component:AppointmentDeleteComponent
-    
   },
   {
     path: '', //Ruta raiz
