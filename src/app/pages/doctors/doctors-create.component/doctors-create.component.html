@@ -1,1 +1,40 @@
-<p>doctors-create.component works!</p>
+<form [formGroup]="doctorForm" (ngSubmit)="enviarFormulario()" class="space-y-4 p-4 border rounded">
+
+    <label for="name" class="block font-semibold">Nombre:</label>
+    <input type="text" id="name" formControlName="name" class="border p-2 w-full">
+    <div *ngIf="doctorForm.get('name')?.invalid && doctorForm.get('name')?.touched">
+      <small *ngIf="doctorForm.get('name')?.errors?.['required']" class="text-red-500">El nombre es obligatorio.</small>
+      <small *ngIf="doctorForm.get('name')?.errors?.['minlength']" class="text-red-500">El nombre debe tener al menos 3 caracteres.</small>
+    </div>
+    
+    <label for="license" class="block font-semibold">Licencia:</label>
+    <input type="text" id="license" formControlName="license" class="border p-2 w-full">
+    <div *ngIf="doctorForm.get('license')?.invalid && doctorForm.get('license')?.touched" class="text-red-500">
+      <small *ngIf="doctorForm.get('license')?.errors?.['required']">Debe tener cedula profesional.</small>
+    </div>
+
+    <label for="area" class="block font-semibold">Area:</label>
+    <input type="text" id="area" formControlName="area" class="border p-2 w-full">
+    <div *ngIf="doctorForm.get('area')?.invalid && doctorForm.get('area')?.touched" class="text-red-500">
+      <small *ngIf="doctorForm.get('area')?.errors?.['required']">Debe tener asignada un area.</small>
+    </div>
+    
+    <label for="email" class="block font-semibold">Email</label>
+    <input type="text" id="email" formControlName="email" class="border p-2 w-full">
+    <div *ngIf="doctorForm.get('email')?.invalid && doctorForm.get('email')?.touched" class="text-red-500">
+        <small *ngIf="doctorForm.get('email')?.errors?.['required']">Debe contar con un Email</small>
+    </div>
+
+    <label for="phone" class="block font-semibold">Teléfono</label>
+    <input type="text" id="phone" formControlName="phone" class="border p-2 w-full">
+    <div *ngIf="doctorForm.get('phone')?.invalid && doctorForm.get('phone')?.touched" class="text-red-500">
+    <small *ngIf="doctorForm.get('phone')?.errors?.['required']">Debe contar con un Teléfono</small>
+    </div>
+    <div class="flex justify-end space-x-2">
+      <a routerLink="/doctors" class="bg-green-500 text-white p-2 rounded">Cancelar</a>
+      <button type="submit" class="bg-blue-500 text-white p-2 rounded"> <!--[disabled]="doctorForm.invalid"-->
+        Guardar
+      </button>
+    </div>
+  
+  </form>
