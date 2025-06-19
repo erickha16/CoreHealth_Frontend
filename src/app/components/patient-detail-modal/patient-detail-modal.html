@@ -1,0 +1,54 @@
+<div class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" (click)="close()">
+  <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl" (click)="$event.stopPropagation()">
+    <!-- Encabezado -->
+    <div class="bg-blue-500 text-white px-6 py-4 rounded-t-lg flex justify-between items-center">
+      <h3 class="text-xl font-bold">Detalles del Paciente</h3>
+      <button (click)="close()" class="text-white hover:text-blue-200">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Cuerpo -->
+    <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- Columna Izquierda -->
+      <div>
+        <div class="mb-4">
+          <h4 class="text-lg font-semibold text-gray-800">{{ patient.name }}</h4>
+          <p class="text-gray-600">ID: {{ patient.id }}</p>
+        </div>
+
+        <div class="space-y-3">
+          <p><span class="font-medium">Género:</span> {{ patient.gender }}</p>
+          <p><span class="font-medium">Nacimiento:</span> {{ patient.birthDate | date:'dd/MM/yyyy' }}</p>
+          <p><span class="font-medium">NSS:</span> {{ patient.nss }}</p>
+        </div>
+      </div>
+
+      <!-- Columna Derecha -->
+      <div class="space-y-3">
+        <p><span class="font-medium">Email:</span> <a [href]="'mailto:' + patient.email" class="text-blue-500 hover:underline">{{ patient.email }}</a></p>
+        <p><span class="font-medium">Teléfono:</span> <a [href]="'tel:' + patient.phone" class="hover:text-blue-500">{{ patient.phone }}</a></p>
+        <p><span class="font-medium">Dirección:</span> {{ patient.adress }}</p>
+      </div>
+    </div>
+
+    <!-- Pie -->
+    <div class="bg-gray-50 px-6 py-3 rounded-b-lg flex justify-end space-x-3">
+      <button 
+        (click)="close()"
+        class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 transition-colors"
+      >
+        Cerrar
+      </button>
+      <button 
+        (click)="deletePatient()"
+        class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
+      >
+        Eliminar Paciente
+      </button>
+    </div>
+  </div>
+</div>
+

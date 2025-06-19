@@ -64,10 +64,10 @@
                   Editar
                 </a>
                 <button 
-                  (click)="deletePatient(patient.id)"
-                  class="text-red-500 hover:text-red-700"
-                >
-                  Eliminar
+                    (click)="openDetails(patient)"
+                    class="text-blue-500 hover:text-blue-700"
+                    >
+                    Ver detalles
                 </button>
               </div>
             </td>
@@ -85,3 +85,10 @@
     </div>
   </div>
 </div>
+
+@if (showDetailModal) {
+  <app-patient-detail-modal 
+    [patient]="selectedPatient"
+    (cerrar)="showDetailModal = false"> <!-- Escucha el evento 'cerrar' -->
+  </app-patient-detail-modal>
+}
