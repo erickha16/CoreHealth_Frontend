@@ -37,6 +37,7 @@ import { AppointmentEditComponent } from './pages/appointments/appointment-edit.
 import { AppointmentDeleteComponent } from './pages/appointments/appointment-delete.component/appointment-delete.component';
 import { PrescriptionShowComponent } from './pages/prescription/prescription-show.component/prescription-show.component';
 import { PrescriptionCreateComponent } from './pages/prescription/prescription-create.component/prescription-create.component';
+import { PrescriptionListComponent } from './pages/prescription/prescription-list.component/prescription-list.component';
 
 export const routes: Routes = [
     {
@@ -242,6 +243,10 @@ export const routes: Routes = [
   {
     path: 'home/delete/:id',
     component:AppointmentDeleteComponent
+  },
+  {
+  path: 'prescription',
+    component: PrescriptionListComponent
   },
   {
     path: 'prescription/create/:id',
