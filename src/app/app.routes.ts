@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
 import { MedicationListComponent } from './pages/medications/medication-list.component/medication-list.component';
 import { MedicationCreateComponent } from './pages/medications/medication-create.component/medication-create.component';
 import { MedicationUpdateComponent } from './pages/medications/medication-update.component/medication-update.component';
@@ -22,6 +21,7 @@ import { PatientsListComponent } from './pages/patients/patients-list.component/
 import { PatientsCreateComponent } from './pages/patients/patients-create.component/patients-create.component';
 import { PatientsUpdateComponent } from './pages/patients/patients-update.component/patients-update.component';
 
+
 import { PrescriptionMedicationsListComponent } from './pages/prescription-medications/prescription-medications-list.component/prescription-medications-list.component';
 import { PrescriptionMedicationsCreateComponent } from './pages/prescription-medications/prescription-medications-create.component/prescription-medications-create.component';
 import { PrescriptionMedicationsUpdateComponent } from './pages/prescription-medications/prescription-medications-update.component/prescription-medications-update.component';
@@ -35,6 +35,8 @@ import { AppointmentListComponent } from './pages/appointments/appointment-list.
 import { AppointmentCreateComponent } from './pages/appointments/appointment-create.component/appointment-create.component';
 import { AppointmentEditComponent } from './pages/appointments/appointment-edit.component/appointment-edit.component';
 import { AppointmentDeleteComponent } from './pages/appointments/appointment-delete.component/appointment-delete.component';
+import { PrescriptionShowComponent } from './pages/prescription/prescription-show.component/prescription-show.component';
+import { PrescriptionCreateComponent } from './pages/prescription/prescription-create.component/prescription-create.component';
 
 export const routes: Routes = [
     {
@@ -143,7 +145,9 @@ export const routes: Routes = [
     path: 'services/update/:id',
     component: ServicesUpdateComponent,
   },
-  { path: 'doctors', component: DoctorsListComponent },
+  { path: 'doctors', 
+    component: DoctorsListComponent 
+  },
   {
     path: 'doctors/create',
     component: DoctorsCreateComponent,
@@ -152,7 +156,9 @@ export const routes: Routes = [
     path: 'doctors/edit/:id',
     component: DoctorsEditComponent,
   },
-  { path: 'doctors/delete/:id', component: DoctorsDeleteComponent },
+  { path: 'doctors/delete/:id', 
+    component: DoctorsDeleteComponent 
+  },
   {
     path: 'prescription_medications/:id', // id = prescriptionId
     component: PrescriptionMedicationsListComponent,
@@ -172,6 +178,22 @@ export const routes: Routes = [
   {
     path: 'clinic_histories/:id', // id = prescriptionId
     component: ClinicHistoriesListComponent,
+  },
+  {
+    path: 'clinic_histories/create/:id', // id = prescriptionId
+    component: ClinicHistoriesCreateComponent,
+  },
+  {
+    path: 'clinic_histories/update/:id',
+    component: ClinicHistoriesUpdateComponent,
+  },
+  {
+    path: 'clinic_histories/delete/:id',
+    component: ClinicHistoriesDeleteComponent,
+  },
+  {
+    path: 'doctors',
+    component: DoctorsListComponent,
   },
   {
     path: 'clinic_histories/create/:id', // id = prescriptionId
@@ -220,6 +242,14 @@ export const routes: Routes = [
   {
     path: 'home/delete/:id',
     component:AppointmentDeleteComponent
+  },
+  {
+    path: 'prescription/create/:id',
+    component: PrescriptionCreateComponent
+  },
+  {
+  path: 'prescription/:id',
+    component: PrescriptionShowComponent
   },
   {
     path: '', //Ruta raiz
