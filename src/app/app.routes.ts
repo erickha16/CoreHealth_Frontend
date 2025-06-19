@@ -9,16 +9,21 @@ import { ServicesCreateComponent } from './pages/services/services-create.compon
 import { ServicesUpdateComponent } from './pages/services/services-update.component/services-update.component';
 import { ServicesDeleteComponent } from './pages/services/services-delete.component/services-delete.component';
 
-import { ClinicHistoriesListComponent } from './pages/clinic-histories/clinic-histories-list.component/clinic-histories-list.component';
-import { ClinicHistoriesCreateComponent } from './pages/clinic-histories/clinic-histories-create.component/clinic-histories-create.component';
-import { ClinicHistoriesUpdateComponent } from './pages/clinic-histories/clinic-histories-update.component/clinic-histories-update.component';
-import { ClinicHistoriesDeleteComponent } from './pages/clinic-histories/clinic-histories-delete.component/clinic-histories-delete.component';
-
 
 import { DoctorsListComponent } from './pages/doctors/doctors-list.component/doctors-list.component';
 import { DoctorsCreateComponent } from './pages/doctors/doctors-create.component/doctors-create.component';
 import { DoctorsEditComponent } from './pages/doctors/doctors-edit.component/doctors-edit.component';
 import { DoctorsDeleteComponent } from './pages/doctors/doctors-delete.component/doctors-delete.component';
+
+import { ClinicHistoriesListComponent } from './pages/clinic-histories/clinic-histories-list.component/clinic-histories-list.component';
+import { ClinicHistoriesCreateComponent } from './pages/clinic-histories/clinic-histories-create.component/clinic-histories-create.component';
+import { ClinicHistoriesUpdateComponent } from './pages/clinic-histories/clinic-histories-update.component/clinic-histories-update.component';
+import { ClinicHistoriesDeleteComponent } from './pages/clinic-histories/clinic-histories-delete.component/clinic-histories-delete.component';
+import { ClinicListComponent } from './pages/clinics/clinic-list.component/clinic-list.component';
+import { ClinicCreateComponent } from './pages/clinics/clinic-create.component/clinic-create.component';
+import { ClinicEditComponent } from './pages/clinics/clinic-edit.component/clinic-edit.component';
+import { ClinicDeleteComponent } from './pages/clinics/clinic-delete.component/clinic-delete.component';
+
 
 export const routes: Routes = [
     {
@@ -57,6 +62,20 @@ export const routes: Routes = [
     path: 'services/update/:id',
     component: ServicesUpdateComponent,
   },
+  {path:'doctors',
+    component:DoctorsListComponent,
+  },
+  {
+    path:'doctors/create',
+    component : DoctorsCreateComponent
+  },
+  {
+    path: 'doctors/edit/:id',
+    component:DoctorsEditComponent
+  },
+  {path: 'doctors/delete/:id',
+    component:DoctorsDeleteComponent
+  },
   {
     path: 'clinic_histories/:id',
     component: ClinicHistoriesListComponent,
@@ -77,12 +96,20 @@ export const routes: Routes = [
     component:DoctorsListComponent,
   },
   {
-    path:'doctors/create',
-    component : DoctorsCreateComponent
+    path:'clinics',
+    component:ClinicListComponent
   },
-  {
-    path: 'doctors/edit/:id',
-    component:DoctorsEditComponent
+    {
+    path:'clinics/create',
+    component:ClinicCreateComponent
+  },
+    {
+    path:'clinics/edit/:id',
+    component:ClinicEditComponent
+  },
+    {
+    path:'clinics/delete/:id',
+    component:ClinicDeleteComponent
   },
   {path: 'doctors/delete/:id',
     component:DoctorsDeleteComponent

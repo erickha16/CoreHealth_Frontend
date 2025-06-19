@@ -1,0 +1,31 @@
+<form [formGroup]="clinicForm" (ngSubmit)="updateClinic()" class="space-y-4 p-4 border rounded">
+
+    <label for="name" class="block font-semibold">Nombre:</label>
+    <input type="text" id="name" formControlName="name" class="border p-2 w-full">
+    <div *ngIf="clinicForm.get('name')?.invalid && clinicForm.get('name')?.touched">
+      <small *ngIf="clinicForm.get('name')?.errors?.['required']" class="text-red-500">El nombre es obligatorio.</small>
+      <small *ngIf="clinicForm.get('name')?.errors?.['minlength']" class="text-red-500">El nombre debe tener al menos 3 caracteres.</small>
+    </div>
+    
+    <label for="description" class="block font-semibold">Descripción:</label>
+    <input type="text" id="description" formControlName="description" class="border p-2 w-full">
+    <div *ngIf="clinicForm.get('description')?.invalid && clinicForm.get('description')?.touched" class="text-red-500">
+      <small *ngIf="clinicForm.get('description')?.errors?.['required']">Debe especificar el tipo de consultorio</small>
+    </div>
+
+    <label for="doctor" class="block font-semibold">Doctor a cargo:</label>
+    <select id="doctor" formControlName="doctorId" class="border p-2 w-full">
+      <option value="" disabled selected>Seleccione una doctor</option>
+      <option *ngFor="let doctor of doctors" [value]="doctor.id">
+        {{ doctor.name }}
+      </option>
+    </select>    
+
+    <div class="flex justify-end space-x-2">
+      <a routerLink="/clinics" class="bg-green-500 text-white p-2 rounded">Cancelar</a>
+      <button type="submit" class="bg-blue-500 text-white p-2 rounded"> <!--[disabled]="clinicForm.invalid"-->
+        Guardar
+      </button>
+    </div>
+  
+  </form>
