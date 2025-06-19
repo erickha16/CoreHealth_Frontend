@@ -1,0 +1,11 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-clinic-list.component',
+  imports: [],
+  templateUrl: './clinic-list.component.html',
+  styleUrl: './clinic-list.component.css'
+})
+export class ClinicListComponent {
+
+}
