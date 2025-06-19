@@ -1,0 +1,48 @@
+<div class="container mx-auto p-6">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Doctores</h2>
+  <hr />
+  <br />
+
+  <a routerLink="/doctors/create" class="bg-green-500 text-white p-2 rounded">
+    Registrar nuevo Doctor
+  </a>
+
+  <br /><br />
+
+  <div class="overflow-x-auto shadow rounded-lg">
+    <table class="min-w-full text-left text-sm text-gray-800">
+      <thead class="bg-gray-100 font-bold">
+        <tr>
+          <th class="px-6 py-4">Nombre</th>
+          <th class="px-6 py-4">Área</th>
+          <th class="px-6 py-4">Teléfono</th>
+          <th class="px-6 py-4">Correo</th>
+          <th class="px-6 py-4 text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let doctor of doctors"
+          class="border-b hover:bg-gray-50 transition"
+        >
+          <td class="px-6 py-4">{{ doctor.name }}</td>
+          <td class="px-6 py-4 text-emerald-600 font-medium">{{ doctor.area }}</td>
+          <td class="px-6 py-4">{{ doctor.phone }}</td>
+          <td class="px-6 py-4">{{ doctor.email }}</td>
+          <td class="px-6 py-4 flex justify-center space-x-2">
+            <a
+              [routerLink]="['/doctors/edit', doctor.id]"
+              class="bg-blue-500 text-white px-3 py-1 rounded"
+              >Actualizar</a
+            >
+            <a
+              [routerLink]="['/doctors/delete', doctor.id]"
+              class="bg-red-600 text-white px-3 py-1 rounded"
+              >Eliminar</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
