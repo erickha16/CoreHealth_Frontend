@@ -16,6 +16,10 @@ import { ClinicHistoriesListComponent } from './pages/clinic-histories/clinic-hi
 import { ClinicHistoriesCreateComponent } from './pages/clinic-histories/clinic-histories-create.component/clinic-histories-create.component';
 import { ClinicHistoriesUpdateComponent } from './pages/clinic-histories/clinic-histories-update.component/clinic-histories-update.component';
 import { ClinicHistoriesDeleteComponent } from './pages/clinic-histories/clinic-histories-delete.component/clinic-histories-delete.component';
+import { ClinicListComponent } from './pages/clinics/clinic-list.component/clinic-list.component';
+import { ClinicCreateComponent } from './pages/clinics/clinic-create.component/clinic-create.component';
+import { ClinicEditComponent } from './pages/clinics/clinic-edit.component/clinic-edit.component';
+import { ClinicDeleteComponent } from './pages/clinics/clinic-delete.component/clinic-delete.component';
 
 export const routes: Routes = [
     {
@@ -83,6 +87,22 @@ export const routes: Routes = [
   {
     path: 'clinic_histories/delete/:id',
     component: ClinicHistoriesDeleteComponent,
+  },
+  {
+    path:'clinics',
+    component:ClinicListComponent
+  },
+    {
+    path:'clinics/create',
+    component:ClinicCreateComponent
+  },
+    {
+    path:'clinics/edit/:id',
+    component:ClinicEditComponent
+  },
+    {
+    path:'clinics/delete/:id',
+    component:ClinicDeleteComponent
   },
     {
         path:'', //Ruta raiz

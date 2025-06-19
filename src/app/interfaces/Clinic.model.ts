@@ -1,6 +1,6 @@
 export interface Clinic {
-Id:number
-Name:string
-Description:string
-DoctorId:number
+id:number
+name:string
+description:string
+doctorId:number
 }

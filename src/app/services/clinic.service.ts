@@ -20,7 +20,7 @@ constructor(private http: HttpClient) { }
     return this.http.post<Clinic>(environment.api.clinic, Clinic);
   }
   public putClinic(ClinicId: number, Clinic: Clinic): Observable<Clinic> {
-    return this.http.put<Clinic>(`${environment.api.clinic}/${Clinic.Id}`, Clinic);
+    return this.http.put<Clinic>(`${environment.api.clinic}/${Clinic.id}`, Clinic);
   }
   public deleteClinic(id: number): Observable<void> {
     return this.http.delete<void>(`${environment.api.clinic}/${id}`);
