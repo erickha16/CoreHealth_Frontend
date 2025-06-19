@@ -1,0 +1,88 @@
+<form [formGroup]="medicationForm" (ngSubmit)="update()" class="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md space-y-4">
+  <!-- Nombre -->
+  <div>
+    <label for="name" class="block text-sm font-medium text-gray-700">Nombre del medicamento*</label>
+    <input 
+      type="text" 
+      id="name" 
+      formControlName="name" 
+      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+    >
+    <div *ngIf="medicationForm.get('name')?.invalid && medicationForm.get('name')?.touched" class="mt-1 text-sm text-red-600">
+      <span *ngIf="medicationForm.get('name')?.errors?.['required']">Este campo es obligatorio</span>
+      <span *ngIf="medicationForm.get('name')?.errors?.['minlength']">Debe tener al menos 3 caracteres</span>
+    </div>
+  </div>
+
+  <!-- Descripción -->
+  <div>
+    <label for="description" class="block text-sm font-medium text-gray-700">Descripción*</label>
+    <textarea 
+      id="description" 
+      formControlName="description" 
+      rows="3"
+      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+    ></textarea>
+    <div *ngIf="medicationForm.get('description')?.invalid && medicationForm.get('description')?.touched" class="mt-1 text-sm text-red-600">
+      <span *ngIf="medicationForm.get('description')?.errors?.['required']">Este campo es obligatorio</span>
+    </div>
+  </div>
+
+  <!-- Presentación -->
+  <div>
+    <label for="presentation" class="block text-sm font-medium text-gray-700">Presentación*</label>
+    <select 
+      id="presentation" 
+      formControlName="presentation" 
+      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+    >
+      <option value="" disabled selected>Seleccione una opción</option>
+      <option *ngFor="let opt of getPresentationOptions()" [ngValue]="opt">{{opt}}</option>
+    </select>
+    <div *ngIf="medicationForm.get('presentation')?.invalid && medicationForm.get('presentation')?.touched" class="mt-1 text-sm text-red-600">
+      <span *ngIf="medicationForm.get('presentation')?.errors?.['required']">Este campo es obligatorio</span>
+    </div>
+  </div>
+
+  <!-- Vía de administración -->
+  <div>
+    <label for="administrationWay" class="block text-sm font-medium text-gray-700">Vía de administración*</label>
+    <select 
+      id="administrationWay" 
+      formControlName="administrationWay" 
+      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+    >
+    <option value="" disabled selected>Seleccione una opción</option>
+    <option *ngFor="let opt of getAdminWayOptions()" [ngValue]="opt">{{opt}}</option>
+    </select>
+    <div *ngIf="medicationForm.get('administrationWay')?.invalid && medicationForm.get('administrationWay')?.touched" class="mt-1 text-sm text-red-600">
+      <span *ngIf="medicationForm.get('administrationWay')?.errors?.['required']">Este campo es obligatorio</span>
+    </div>
+  </div>
+
+  <!-- Imagen -->
+  <!-- Reemplaza la sección de imagen con esto: -->
+<div class="mb-4">
+  <label class="block text-sm font-medium text-gray-700">Imagen actual</label>
+  <img 
+    [src]="'https://localhost:7167' + medicationData.urlImage" 
+    class="h-32 object-contain mx-auto border rounded mt-2"
+    *ngIf="medicationData?.urlImage"
+  >
+  <p class="text-xs text-gray-500 mt-1">La imagen no se puede modificar en esta vista</p>
+</div>
+
+  <!-- Botones -->
+  <div class="flex justify-end space-x-3 pt-4">
+    <a 
+      routerLink="/medications" 
+      class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+      Cancelar
+    </a>
+    <button 
+      type="submit" 
+      class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed">
+      Guardar medicamento
+    </button>
+  </div>
+</form>
