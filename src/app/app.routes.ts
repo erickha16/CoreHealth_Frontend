@@ -7,6 +7,7 @@ import { ServicesDeleteComponent } from './pages/services/services-delete.compon
 import { DoctorsListComponent } from './pages/doctors/doctors-list.component/doctors-list.component';
 import { DoctorsCreateComponent } from './pages/doctors/doctors-create.component/doctors-create.component';
 import { DoctorsEditComponent } from './pages/doctors/doctors-edit.component/doctors-edit.component';
+import { DoctorsDeleteComponent } from './pages/doctors/doctors-delete.component/doctors-delete.component';
 
 export const routes: Routes = [
   {
@@ -45,4 +46,7 @@ export const routes: Routes = [
     path: 'doctors/edit/:id',
     component:DoctorsEditComponent
   },
+  {path: 'doctors/delete/:id',
+    component:DoctorsDeleteComponent
+  }
 ];

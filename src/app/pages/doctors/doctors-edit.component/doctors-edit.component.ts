@@ -27,7 +27,7 @@ export class DoctorsEditComponent {
 
 
   ngOnInit(): void {
-    // Obtener el ID del producto de la URL
+    // Obtener el ID del doctor de la URL
     this.doctorId = Number(this.route.snapshot.paramMap.get('id'));
 
     // Inicializar el formulario
@@ -39,11 +39,11 @@ export class DoctorsEditComponent {
       phone: ['', [Validators.required,Validators.minLength(10), Validators.maxLength(15)]],
     });
 
-    // Cargar los datos del producto para editar
+    // Cargar los datos del doctor para editar
     this.loadProductData();
   }
 
-  // Cargar al formulario los datos del producto desde la API
+  // Cargar al formulario los datos del doctor desde la API
   loadProductData() {
     this.doctorService.getbyIdDoctor(this.doctorId).subscribe((data: Doctor) => {
         this.doctorData = data;
@@ -57,7 +57,7 @@ export class DoctorsEditComponent {
     });
   }
 
-  // Enviar el formulario para actualizar el producto
+  // Enviar el formulario para actualizar el doctor
   updateDoctor() {
     if (this.doctorForm.invalid) {
       return;  // No enviar si el formulario es inválido
@@ -71,10 +71,10 @@ export class DoctorsEditComponent {
     this.doctorService.putDoctor(this.doctorId, updatedDoctor).subscribe({
       next: () => {
         console.log('Doctor actualizado');
-        this.router.navigate(['/doctors']);  // Redirigir a la lista de productos
+        this.router.navigate(['/doctors']);  // Redirigir a la lista de doctores
       },
       error: err => {
-        console.error('Error al actualizar el producto:', err);
+        console.error('Error al actualizar el doctor:', err);
       }
     });
   }

@@ -39,13 +39,13 @@ ngOnInit(): void {
     // Obtener los datos del formulario para enviarlos
     const doctorData = this.doctorForm.value;
 
-    // Llamar al servicio para enviar los datos del producto
+    // Llamar al servicio para enviar los datos del doctor
     this.doctorService.postDoctor(doctorData).subscribe({
       next: response => {
-        this.router.navigate(['/doctors']); //Redirigir a la lista de productos
+        this.router.navigate(['/doctors']); //Redirigir a la lista de doctors
       },
       error: err => {
-        console.log("Error al crear el producto", err);
+        console.log("Error al crear el doctor", err);
       }
     });
 
