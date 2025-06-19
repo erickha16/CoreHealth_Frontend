@@ -1,38 +1,135 @@
-<form [formGroup]="doctorForm" (ngSubmit)="updateDoctor()" class="space-y-4 p-4 border rounded">
-    <label for="name" class="block font-semibold">Nombre:</label>
-    <input type="text" id="name" formControlName="name" class="border p-2 w-full">
-    <div *ngIf="doctorForm.get('name')?.invalid && doctorForm.get('name')?.touched">
-      <small *ngIf="doctorForm.get('name')?.errors?.['required']" class="text-red-500">El nombre es obligatorio.</small>
-      <small *ngIf="doctorForm.get('name')?.errors?.['minlength']" class="text-red-500">El nombre debe tener al menos 3 caracteres.</small>
-    </div>
-    
-    <label for="license" class="block font-semibold">Licencia:</label>
-    <input type="text" id="license" formControlName="license" class="border p-2 w-full">
-    <div *ngIf="doctorForm.get('license')?.invalid && doctorForm.get('license')?.touched" class="text-red-500">
-      <small *ngIf="doctorForm.get('license')?.errors?.['required']">Debe tener cedula profesional.</small>
-    </div>
+<form
+  [formGroup]="doctorForm"
+  (ngSubmit)="updateDoctor()"
+  class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow-md space-y-6"
+>
+  <h2 class="text-2xl font-bold text-gray-800 mb-4">
+    Editar Información del Doctor
+  </h2>
 
-    <label for="area" class="block font-semibold">Area:</label>
-    <input type="text" id="area" formControlName="area" class="border p-2 w-full">
-    <div *ngIf="doctorForm.get('area')?.invalid && doctorForm.get('area')?.touched" class="text-red-500">
-      <small *ngIf="doctorForm.get('area')?.errors?.['required']">Debe tener asignada un area.</small>
+  <!-- Nombre -->
+  <div>
+    <label for="name" class="block text-gray-700 font-medium mb-1"
+      >Nombre</label
+    >
+    <input
+      type="text"
+      id="name"
+      formControlName="name"
+      placeholder="Ej. Dr. Juan Pérez"
+      class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <div
+      *ngIf="doctorForm.get('name')?.invalid && doctorForm.get('name')?.touched"
+      class="text-sm text-red-600 mt-1"
+    >
+      <small *ngIf="doctorForm.get('name')?.errors?.['required']"
+        >El nombre es obligatorio.</small
+      >
+      <small *ngIf="doctorForm.get('name')?.errors?.['minlength']"
+        >Debe tener al menos 3 caracteres.</small
+      >
     </div>
-    
-    <label for="email" class="block font-semibold">Email</label>
-    <input type="text" id="email" formControlName="email" class="border p-2 w-full">
-    <div *ngIf="doctorForm.get('email')?.invalid && doctorForm.get('email')?.touched" class="text-red-500">
-        <small *ngIf="doctorForm.get('email')?.errors?.['required']">Debe contar con un Email</small>
-    </div>
+  </div>
 
-    <label for="phone" class="block font-semibold">Teléfono</label>
-    <input type="text" id="phone" formControlName="phone" class="border p-2 w-full">
-    <div *ngIf="doctorForm.get('phone')?.invalid && doctorForm.get('phone')?.touched" class="text-red-500">
-    <small *ngIf="doctorForm.get('phone')?.errors?.['required']">Debe contar con un Teléfono</small>
+  <!-- Licencia -->
+  <div>
+    <label for="license" class="block text-gray-700 font-medium mb-1"
+      >Licencia</label
+    >
+    <input
+      type="text"
+      id="license"
+      formControlName="license"
+      placeholder="Ej. 12345678"
+      class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <div
+      *ngIf="
+        doctorForm.get('license')?.invalid && doctorForm.get('license')?.touched
+      "
+      class="text-sm text-red-600 mt-1"
+    >
+      <small>Debe tener cédula profesional.</small>
     </div>
-    <div class="flex justify-end space-x-2">
-      <a routerLink="/doctors" class="bg-green-500 text-white p-2 rounded">Cancelar</a>
-      <button type="submit" class="bg-blue-500 text-white p-2 rounded"> <!--[disabled]="doctorForm.invalid"-->
-        Guardar
-      </button>
+  </div>
+
+  <!-- Área -->
+  <div>
+    <label for="area" class="block text-gray-700 font-medium mb-1">Área</label>
+    <input
+      type="text"
+      id="area"
+      formControlName="area"
+      placeholder="Ej. Cardiología"
+      class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <div
+      *ngIf="doctorForm.get('area')?.invalid && doctorForm.get('area')?.touched"
+      class="text-sm text-red-600 mt-1"
+    >
+      <small>Debe tener asignada un área.</small>
     </div>
+  </div>
+
+  <!-- Email -->
+  <div>
+    <label for="email" class="block text-gray-700 font-medium mb-1"
+      >Correo Electrónico</label
+    >
+    <input
+      type="email"
+      id="email"
+      formControlName="email"
+      placeholder="doctor@clinica.com"
+      class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <div
+      *ngIf="
+        doctorForm.get('email')?.invalid && doctorForm.get('email')?.touched
+      "
+      class="text-sm text-red-600 mt-1"
+    >
+      <small>Debe contar con un correo electrónico válido.</small>
+    </div>
+  </div>
+
+  <!-- Teléfono -->
+  <div>
+    <label for="phone" class="block text-gray-700 font-medium mb-1"
+      >Teléfono</label
+    >
+    <input
+      type="tel"
+      id="phone"
+      formControlName="phone"
+      placeholder="Ej. 5551234567"
+      class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <div
+      *ngIf="
+        doctorForm.get('phone')?.invalid && doctorForm.get('phone')?.touched
+      "
+      class="text-sm text-red-600 mt-1"
+    >
+      <small>Debe contar con un número de teléfono.</small>
+    </div>
+  </div>
+
+  <!-- Botones -->
+  <div class="flex justify-end space-x-4 pt-4">
+    <a
+      routerLink="/doctors"
+      class="px-5 py-2 rounded-md bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold transition"
+    >
+      Cancelar
+    </a>
+    <button
+      type="submit"
+      [disabled]="doctorForm.invalid"
+      class="px-5 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Guardar
+    </button>
+  </div>
 </form>

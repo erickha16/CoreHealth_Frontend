@@ -50,3 +50,4 @@ export class MedicationDeleteComponent implements OnInit {
   }
 
 }
+ 
