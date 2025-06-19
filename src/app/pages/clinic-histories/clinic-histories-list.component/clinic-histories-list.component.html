@@ -1,0 +1,66 @@
+<div class="text-gray-900 bg-gray-200 min-h-screen">
+  <!-- Encabezado -->
+  <div class="p-4 flex justify-between items-center">
+    <h1 class="text-3xl font-semibold">Historial Clínico</h1>
+    <div class="space-x-2">
+      <button
+        class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded shadow"
+        [routerLink]="['/clinic_histories/create', patientId]"
+      >
+        Nuevo Registro
+      </button>
+      <button
+        class="bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded shadow"
+        routerLink="/home"
+      >
+        Regresar
+      </button>
+    </div>
+  </div>
+
+  <!-- Tabla -->
+  <div class="px-3 py-4 flex justify-center">
+    <table class="w-full text-md bg-white shadow-md rounded mb-4">
+      <thead>
+        <tr class="border-b bg-gray-300">
+          <th class="text-left p-3 px-5">Nombre del Paciente</th>
+          <th class="text-left p-3 px-5">Fecha</th>
+          <th class="text-left p-3 px-5">Descripción</th>
+          <th class="text-left p-3 px-5">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let clinic of filteredClinicHistories"
+          class="border-b hover:bg-orange-100"
+        >
+          <td class="p-3 px-5">
+            {{ clinic.patientName }}
+          </td>
+          <td class="p-3 px-5">
+            {{ clinic.date }}
+          </td>
+          <td class="p-3 px-5">
+            {{ clinic.description }}
+          </td>
+          <td class="p-3 px-5 flex justify-end space-x-2">
+            <button
+              type="button"
+              class="text-sm bg-green-500 hover:bg-green-700 text-white py-1 px-2 rounded focus:outline-none"
+              [routerLink]="['/clinic_histories/update', clinic.id]"
+            >
+              Editar
+            </button>
+            <button
+              type="button"
+              class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none"
+              [routerLink]="['/clinic_histories/delete', clinic.id]"
+            >
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
