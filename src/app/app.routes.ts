@@ -220,8 +220,6 @@ export const routes: Routes = [
   {
     path: 'home/delete/:id',
     component:AppointmentDeleteComponent
-    path: 'doctors/delete/:id',
-    component: DoctorsDeleteComponent,
   },
   {
     path: '', //Ruta raiz
