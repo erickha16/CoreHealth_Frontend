@@ -1,1 +1,57 @@
-<p>appointment-create.component works!</p>
+<form [formGroup]="appointmentForm" (ngSubmit)="enviarFormulario()" class="space-y-4 p-4 border rounded">
+
+    <mat-form-field>
+        <mat-label>Selecciona una fecha</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <label for="patient" class="block font-semibold">Paciente:</label>
+    <select id="patient" formControlName="patientId" class="border p-2 w-full">
+      <option value="" disabled selected>Seleccione un paciente</option>
+      <option *ngFor="let patient of patients" [value]="patient.id">
+        {{ patient.name }}
+      </option>
+    </select>    
+
+    <label for="clinic" class="block font-semibold">consultorio:</label>
+    <select id="clinic" formControlName="clinicId" class="border p-2 w-full">
+      <option value="" disabled selected>Seleccione una patient</option>
+      <option *ngFor="let clinic of clinics" [value]="clinic.id">
+        {{ clinic.name }}
+      </option>
+    </select>    
+
+    <label for="reason" class="block font-semibold">Motivo de la cita:</label>
+    <input type="text" id="reason" formControlName="reason" class="border p-2 w-full">
+    <div *ngIf="appointmentForm.get('reason')?.invalid && appointmentForm.get('reason')?.touched">
+      <small *ngIf="appointmentForm.get('reason')?.errors?.['required']" class="text-red-500">El motivo no puede estar en blanco.</small>
+    </div>
+    
+    <label for="diagnostic" class="block font-semibold">Diagnostico:</label>
+    <input type="text" id="diagnostic" formControlName="diagnostic" class="border p-2 w-full">
+    
+
+    <label for="treatment" class="block font-semibold">Tratamiento:</label>
+    <input type="text" id="treatment" formControlName="treatment" class="border p-2 w-full">
+    
+    
+    <label for="service" class="block font-semibold">servicio:</label>
+    <select id="service" formControlName="serviceId" class="border p-2 w-full">
+      <option value="" disabled selected>Seleccione un Servicio</option>
+      <option *ngFor="let service of services" [value]="service.id">
+        {{ service.name }}
+      </option>
+    </select> 
+
+
+    <div class="flex justify-end space-x-2">
+      <a routerLink="/home" class="bg-green-500 text-white p-2 rounded">Cancelar</a>
+      <button type="submit" class="bg-blue-500 text-white p-2 rounded"> <!--[disabled]="appointmentForm.invalid"-->
+        Guardar
+      </button>
+    </div>
+  
+  </form>

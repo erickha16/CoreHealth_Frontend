@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
 import { MedicationListComponent } from './pages/medications/medication-list.component/medication-list.component';
 import { MedicationCreateComponent } from './pages/medications/medication-create.component/medication-create.component';
 import { MedicationUpdateComponent } from './pages/medications/medication-update.component/medication-update.component';
@@ -21,6 +20,7 @@ import { ClinicHistoriesDeleteComponent } from './pages/clinic-histories/clinic-
 import { PatientsListComponent } from './pages/patients/patients-list.component/patients-list.component';
 import { PatientsCreateComponent } from './pages/patients/patients-create.component/patients-create.component';
 import { PatientsUpdateComponent } from './pages/patients/patients-update.component/patients-update.component';
+
 
 import { PrescriptionMedicationsListComponent } from './pages/prescription-medications/prescription-medications-list.component/prescription-medications-list.component';
 import { PrescriptionMedicationsCreateComponent } from './pages/prescription-medications/prescription-medications-create.component/prescription-medications-create.component';
@@ -145,7 +145,9 @@ export const routes: Routes = [
     path: 'services/update/:id',
     component: ServicesUpdateComponent,
   },
-  { path: 'doctors', component: DoctorsListComponent },
+  { path: 'doctors', 
+    component: DoctorsListComponent 
+  },
   {
     path: 'doctors/create',
     component: DoctorsCreateComponent,
@@ -154,7 +156,9 @@ export const routes: Routes = [
     path: 'doctors/edit/:id',
     component: DoctorsEditComponent,
   },
-  { path: 'doctors/delete/:id', component: DoctorsDeleteComponent },
+  { path: 'doctors/delete/:id', 
+    component: DoctorsDeleteComponent 
+  },
   {
     path: 'prescription_medications/:id', // id = prescriptionId
     component: PrescriptionMedicationsListComponent,
@@ -174,6 +178,22 @@ export const routes: Routes = [
   {
     path: 'clinic_histories/:id', // id = prescriptionId
     component: ClinicHistoriesListComponent,
+  },
+  {
+    path: 'clinic_histories/create/:id', // id = prescriptionId
+    component: ClinicHistoriesCreateComponent,
+  },
+  {
+    path: 'clinic_histories/update/:id',
+    component: ClinicHistoriesUpdateComponent,
+  },
+  {
+    path: 'clinic_histories/delete/:id',
+    component: ClinicHistoriesDeleteComponent,
+  },
+  {
+    path: 'doctors',
+    component: DoctorsListComponent,
   },
   {
     path: 'clinic_histories/create/:id', // id = prescriptionId
