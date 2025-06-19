@@ -67,7 +67,7 @@ export const routes: Routes = [
   },
   {path: 'doctors/delete/:id',
     component:DoctorsDeleteComponent
-  }
+  },
   {
     path: 'clinic_histories/:id',
     component: ClinicHistoriesListComponent,
