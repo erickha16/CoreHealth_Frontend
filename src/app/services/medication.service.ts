@@ -21,14 +21,14 @@ export class MedicationService {
   public getById(id: number): Observable<Medication>{
     return this.http.get<Medication>(`${environment.api.medication}/${id}`);
   }
-  //Crear
-  public Create(medication:Medication): Observable<Medication>{
-    return this.http.post<Medication>(environment.api.medication, medication);
+  //Crear con imagen (formData: FormData)
+  public Create(formData: FormData): Observable<Medication>{
+    return this.http.post<Medication>(environment.api.medication, formData);
   }
 
   //Editar
-  public putUpdate(id:number, medication:Medication): Observable<Medication>{
-    return this.http.put<Medication>(`${environment.api.medication}/${id}`, medication);
+  public putUpdate(id:number, formData: FormData): Observable<Medication>{
+    return this.http.put<Medication>(`${environment.api.medication}/${id}`, formData);
   }
 
   //Eliminar
