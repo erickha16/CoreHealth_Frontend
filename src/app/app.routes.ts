@@ -199,6 +199,32 @@ export const routes: Routes = [
     component: ClinicCreateComponent,
   },
   {
+  },
+  {
+    path: 'clinic_histories/create/:id', // id = prescriptionId
+    component: ClinicHistoriesCreateComponent,
+  },
+  {
+    path: 'clinic_histories/update/:id',
+    component: ClinicHistoriesUpdateComponent,
+  },
+  {
+    path: 'clinic_histories/delete/:id',
+    component: ClinicHistoriesDeleteComponent,
+  },
+  {
+    path: 'doctors',
+    component: DoctorsListComponent,
+  },
+  {
+    path: 'clinics',
+    component: ClinicListComponent,
+  },
+  {
+    path: 'clinics/create',
+    component: ClinicCreateComponent,
+  },
+  {
     path: 'clinics/edit/:id',
     component: ClinicEditComponent,
   },
