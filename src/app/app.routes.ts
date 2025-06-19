@@ -19,34 +19,41 @@ import { ClinicHistoriesListComponent } from './pages/clinic-histories/clinic-hi
 import { ClinicHistoriesCreateComponent } from './pages/clinic-histories/clinic-histories-create.component/clinic-histories-create.component';
 import { ClinicHistoriesUpdateComponent } from './pages/clinic-histories/clinic-histories-update.component/clinic-histories-update.component';
 import { ClinicHistoriesDeleteComponent } from './pages/clinic-histories/clinic-histories-delete.component/clinic-histories-delete.component';
+
+import { PrescriptionMedicationsListComponent } from './pages/prescription-medications/prescription-medications-list.component/prescription-medications-list.component';
+import { PrescriptionMedicationsCreateComponent } from './pages/prescription-medications/prescription-medications-create.component/prescription-medications-create.component';
+import { PrescriptionMedicationsUpdateComponent } from './pages/prescription-medications/prescription-medications-update.component/prescription-medications-update.component';
+import { PrescriptionMedicationsDeleteComponent } from './pages/prescription-medications/prescription-medications-delete.component/prescription-medications-delete.component';
+
 import { ClinicListComponent } from './pages/clinics/clinic-list.component/clinic-list.component';
 import { ClinicCreateComponent } from './pages/clinics/clinic-create.component/clinic-create.component';
 import { ClinicEditComponent } from './pages/clinics/clinic-edit.component/clinic-edit.component';
 import { ClinicDeleteComponent } from './pages/clinics/clinic-delete.component/clinic-delete.component';
 
 
+
 export const routes: Routes = [
-    {
-        path: 'home',
-        component: Home // Aquí se especifica el componente que se mostrará cuando la ruta sea 'home'
-    },
-    {
-        path: 'medications',
-        component: MedicationListComponent
-    },
-    {
-        path: 'medications/create',
-        component: MedicationCreateComponent
-    },
-    {
-        path: 'medications/edit/:id',
-        component: MedicationUpdateComponent
-    },
-    {
-        path: 'medications/delete/:id',
-        component: MedicationDeleteComponent
-    },
-    {
+  {
+    path: 'home',
+    component: Home, // Aquí se especifica el componente que se mostrará cuando la ruta sea 'home'
+  },
+  {
+    path: 'medications',
+    component: MedicationListComponent,
+  },
+  {
+    path: 'medications/create',
+    component: MedicationCreateComponent,
+  },
+  {
+    path: 'medications/edit/:id',
+    component: MedicationUpdateComponent,
+  },
+  {
+    path: 'medications/delete/:id',
+    component: MedicationDeleteComponent,
+  },
+  {
     path: 'services',
     component: ServicesListComponent,
   },
@@ -62,61 +69,59 @@ export const routes: Routes = [
     path: 'services/update/:id',
     component: ServicesUpdateComponent,
   },
-  {path:'doctors',
-    component:DoctorsListComponent,
-  },
+  { path: 'doctors', component: DoctorsListComponent },
   {
-    path:'doctors/create',
-    component : DoctorsCreateComponent
+    path: 'doctors/create',
+    component: DoctorsCreateComponent,
   },
   {
     path: 'doctors/edit/:id',
-    component:DoctorsEditComponent
+    component: DoctorsEditComponent,
   },
-  {path: 'doctors/delete/:id',
-    component:DoctorsDeleteComponent
+  { path: 'doctors/delete/:id', component: DoctorsDeleteComponent },
+  {
+    path: 'prescription_medications/:id', // id = prescriptionId
+    component: PrescriptionMedicationsListComponent,
   },
   {
-    path: 'clinic_histories/:id',
-    component: ClinicHistoriesListComponent,
+    path: 'prescription_medications/create/:id', // id = prescriptionId
+    component: PrescriptionMedicationsCreateComponent,
   },
   {
-    path: 'clinic_histories/create/:id',
-    component: ClinicHistoriesCreateComponent,
+    path: 'prescription_medications/update/:id',
+    component: PrescriptionMedicationsUpdateComponent,
   },
   {
-    path: 'clinic_histories/update/:id',
-    component: ClinicHistoriesUpdateComponent,
+    path: 'prescription_medications/delete/:id',
+    component: PrescriptionMedicationsDeleteComponent,
   },
   {
-    path: 'clinic_histories/delete/:id',
-    component: ClinicHistoriesDeleteComponent,
-  },
-  {path:'doctors',
+    path:'doctors',
     component:DoctorsListComponent,
   },
   {
     path:'clinics',
     component:ClinicListComponent
   },
-    {
+  {
     path:'clinics/create',
     component:ClinicCreateComponent
   },
-    {
+  {
     path:'clinics/edit/:id',
     component:ClinicEditComponent
   },
-    {
+  {
     path:'clinics/delete/:id',
     component:ClinicDeleteComponent
   },
-  {path: 'doctors/delete/:id',
+  {
+    path: 'doctors/delete/:id',
     component:DoctorsDeleteComponent
   },
-    {
-        path:'', //Ruta raiz
-        redirectTo: 'home', //Redirigir a la ruta home
-        pathMatch: 'full' //Hacer que la ruta sea exacta
-    },
+  {
+     path:'', //Ruta raiz
+     redirectTo: 'home', //Redirigir a la ruta home
+     pathMatch: 'full' //Hacer que la ruta sea exacta
+  },
 ]
