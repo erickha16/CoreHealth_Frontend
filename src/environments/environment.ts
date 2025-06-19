@@ -1,8 +1,8 @@
 export const environment = {
   api: {
-    appointment: '',
+    appointment: 'https://localhost:7167/api/v1/appointments',
     clinicHistory: 'https://localhost:7167/api/v1/clinic-histories',
-    clinic: '',
+    clinic: 'https://localhost:7167/api/v1/clinic',
     doctor: 'https://localhost:7167/api/v1/doctors',
     medication: 'https://localhost:7167/api/medications',
     patient: '',

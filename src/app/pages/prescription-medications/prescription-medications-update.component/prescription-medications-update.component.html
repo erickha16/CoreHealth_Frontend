@@ -1,0 +1,127 @@
+<form
+  [formGroup]="medicationForm"
+  (ngSubmit)="enviarFormulario()"
+  class="max-w-xl mx-auto bg-white p-6 rounded-xl shadow-lg space-y-6"
+>
+  <h2 class="text-2xl font-bold text-gray-800 mb-4">
+    Editar Medicamento Recetado
+  </h2>
+
+  <!-- prescriptionId oculto -->
+  <div>
+    <input type="hidden" id="prescriptionId" formControlName="prescriptionId" />
+  </div>
+
+  <!-- Medicamento -->
+  <div>
+    <label for="medicationId" class="block text-gray-700 font-semibold mb-2">
+      Medicamento
+    </label>
+    <select
+      id="medicationId"
+      formControlName="medicationId"
+      class="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+    >
+      <option value="" disabled>Seleccione un medicamento</option>
+      <option *ngFor="let med of medications" [value]="med.id">
+        {{ med.name }}
+      </option>
+    </select>
+    <div
+      *ngIf="
+        medicationForm.get('medicationId')?.invalid &&
+        medicationForm.get('medicationId')?.touched
+      "
+      class="mt-1 text-sm text-red-600"
+    >
+      <small>Debes seleccionar un medicamento.</small>
+    </div>
+  </div>
+
+  <!-- Dosis -->
+  <div>
+    <label for="dosage" class="block text-gray-700 font-semibold mb-2">
+      Dosis
+    </label>
+    <input
+      type="text"
+      id="dosage"
+      formControlName="dosage"
+      class="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+      placeholder="Ej. 500mg, 1 tableta"
+    />
+    <div
+      *ngIf="
+        medicationForm.get('dosage')?.invalid &&
+        medicationForm.get('dosage')?.touched
+      "
+      class="mt-1 text-sm text-red-600"
+    >
+      <small>La dosis es obligatoria.</small>
+    </div>
+  </div>
+
+  <!-- Frecuencia -->
+  <div>
+    <label for="frequency" class="block text-gray-700 font-semibold mb-2">
+      Frecuencia
+    </label>
+    <input
+      type="text"
+      id="frequency"
+      formControlName="frequency"
+      class="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+      placeholder="Ej. Cada 8 horas"
+    />
+    <div
+      *ngIf="
+        medicationForm.get('frequency')?.invalid &&
+        medicationForm.get('frequency')?.touched
+      "
+      class="mt-1 text-sm text-red-600"
+    >
+      <small>La frecuencia es obligatoria.</small>
+    </div>
+  </div>
+
+  <!-- Duración -->
+  <div>
+    <label for="duration" class="block text-gray-700 font-semibold mb-2">
+      Duración
+    </label>
+    <input
+      type="text"
+      id="duration"
+      formControlName="duration"
+      class="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+      placeholder="Ej. 7 días"
+    />
+    <div
+      *ngIf="
+        medicationForm.get('duration')?.invalid &&
+        medicationForm.get('duration')?.touched
+      "
+      class="mt-1 text-sm text-red-600"
+    >
+      <small>La duración es obligatoria.</small>
+    </div>
+  </div>
+
+  <!-- Botones -->
+  <div class="flex justify-end space-x-3 pt-4">
+    <button
+      type="button"
+      [routerLink]="['/prescription_medications', prescriptionId]"
+      class="px-5 py-2 rounded-md bg-gray-300 hover:bg-gray-400 transition font-semibold text-gray-700"
+    >
+      Cancelar
+    </button>
+    <button
+      type="submit"
+      [disabled]="medicationForm.invalid"
+      class="px-5 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Actualizar
+    </button>
+  </div>
+</form>

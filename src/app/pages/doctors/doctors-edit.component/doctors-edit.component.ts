@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Doctor } from '../../../interfaces/Doctor.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { DoctorService } from '../../../services/doctor.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-doctors-edit.component',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule,ReactiveFormsModule,RouterLink],
   templateUrl: './doctors-edit.component.html',
   styleUrl: './doctors-edit.component.css'
 })
